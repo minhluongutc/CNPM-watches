@@ -1,0 +1,35 @@
+.sidebar {
+  background-color: #0F4AA4;
+  color: #fff;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  bottom: 0;
+}
+
+.active {
+  background-color: #1068D8;
+}
+
+.logo-img {
+  width: 100%;
+  padding: 10px 35px 20px 35px;
+}
+
+.logo--link {
+}
+
+.list-item {
+  list-style: none;
+}
+
+.tab-item {
+  padding: 15px 23px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.tab-item:hover {
+  background-color: #163479;
+}

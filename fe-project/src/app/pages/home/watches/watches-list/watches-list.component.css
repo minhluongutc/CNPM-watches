@@ -1,0 +1,8 @@
+.head-content {
+  justify-content: space-between;
+}
+
+.grid__button {
+  align-items: flex-start;
+  gap: 12px;
+}

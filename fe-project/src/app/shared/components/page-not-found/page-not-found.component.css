@@ -1,0 +1,22 @@
+.img--container {
+  padding: 53.6px 64px 0 64px;
+  display: flex;
+  justify-content: center;
+}
+
+.img-link {
+  text-decoration: none;
+}
+
+.page-not-fond__heading {
+  font-size: 13px;
+}
+
+.img-class {
+  width: 639px;
+  height: auto;
+}
+
+.page-not-fond__desc-text {
+  margin: 20px 0;
+}

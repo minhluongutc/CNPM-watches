@@ -1,0 +1,49 @@
+.header {
+  height: 55px;
+  background-color: #fff;
+  border-bottom: 3px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100000;
+}
+
+.logo {
+  height: 100%;
+}
+
+.logo-img {
+  height: 100%;
+  padding: 13px 25px
+}
+
+.user {
+  display: flex;
+  padding: 0 10px;
+  cursor: pointer;
+  height: 100%;
+}
+
+.user:hover {
+  background-color: rgba(204, 204, 204, 0.38);
+  height: 100%;
+  border-radius: 10px;
+}
+
+.user-name {
+  margin: auto;
+}
+
+.drop-down-icon {
+  margin: auto 10px;
+}
+
+.dropdown-item {
+  padding: 8px 4px;
+}
+
+.dropdown-item:hover {
+  background-color: #ccc;
+}

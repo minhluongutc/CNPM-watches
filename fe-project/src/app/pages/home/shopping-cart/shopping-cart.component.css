@@ -1,0 +1,101 @@
+.max-width--xmedium {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.product-line-item__main {
+  position: relative;
+}
+
+.cart {
+  padding: 76px 32px 36px 32px;
+}
+
+.brand__panther-image {
+  padding-bottom: 32px;
+  margin: 0 25.5px;
+}
+
+.panther-image {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  max-width: 5rem;
+}
+
+.cart__header {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 30px;
+}
+
+.cart__title {
+  letter-spacing: .025rem;
+  font-size: 24px;
+  font-family: Brilliant Cut, Almarai, Helvetica, Arial, sans-serif;
+  line-height: 28px;
+}
+
+.cart__header-count {
+  margin-left: 20px;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.product__line-item {
+  padding: 40px 32px 36px 32px;
+  margin-bottom: 44px;
+  background-color: #F9F9F9;
+}
+
+.product-line-item__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price-primary {
+  font-size: 19px;
+  font-family: Brilliant Cut, Almarai, Helvetica, Arial, sans-serif;
+  -webkit-text-stroke-width: 0.3px;
+}
+
+.product-line-item__actions {
+  margin-top: 16px;
+}
+
+.product-line__buy {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.product-line__buy-link {
+  width: calc(100% - 24px);
+}
+
+.checkout__container {
+  border: 1px solid #000;
+  padding: 28px 32px;
+  position: sticky;
+  top: 108px;
+}
+
+.checkout__button {
+  margin-top: 24px;
+}
+
+.checkout__button-link, checkout__button {
+  width: 100%;
+}
+
+.back-to-shopping {
+  display: inline-flex;
+  align-items: center;
+  gap: 0 8px;
+}
+
+.back-text {
+  font-size: 18px;
+  font-family: Brilliant Cut, Almarai, Helvetica, Arial, sans-serif;
+  color: #000;
+  line-height: 18px;
+}

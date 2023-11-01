@@ -1,0 +1,48 @@
+<form [formGroup]="loginForm">
+  <p class="form-intro">If you are already registered with Cartier, login here:</p>
+  <p class="form-required">Required field*</p>
+  <div class="form-group">
+    <input type="text" class="form-input" required formControlName="email"
+           [class.form-input__error]="email?.invalid && email?.touched">
+    <span class="bar"></span>
+    <label class="form-label">Email address*</label>
+    <span *ngIf="email?.invalid && email?.touched" class="help-block">
+      <span *ngIf="email?.errors?.['required']" class="red">
+        Error - This field is required
+      </span>
+      <span *ngIf="email?.errors?.['email']" class="red">
+        Error - Please enter a valid Email address
+      </span>
+    </span>
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-input" required formControlName="password"
+           [class.form-input__error]="password?.invalid && password?.touched">
+    <span class="bar"></span>
+    <label class="form-label">Password*</label>
+    <span *ngIf="password?.invalid && password?.touched" class="help-block">
+      <span *ngIf="password?.errors?.['required']" class="red">
+        Error - This field is required
+      <br>
+      </span>
+      <span *ngIf="!password?.errors?.['minLength']" class="red">
+        Error - This field is greater than 6
+      </span>
+    </span>
+  </div>
+  <div class="form-group">
+    <div class="form-forgot">
+      <a href="" class="forgot-link">Forgot your password?</a>
+    </div>
+    <div class="form-policy">
+      <p class="policy-intro">Read the
+        <a href="" class="policy-link">Privacy Policy</a>
+        for further information
+      </p>
+    </div>
+  </div>
+  <div class="form-actions text-align--center">
+    <button type="submit" class="button button--primary" (click)="onSubmit()" [disabled]="loginForm.invalid">Login</button>
+  </div>
+
+</form>

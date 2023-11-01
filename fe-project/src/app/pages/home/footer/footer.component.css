@@ -1,0 +1,14 @@
+.subscription-banner {
+  margin-top: 90px;
+  margin-bottom: 30px;
+  padding: 80px 0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.subscription-banner__description {
+  letter-spacing: .025rem;
+  font-weight: 600;
+  font-family: Brilliant Cut, Almarai, Helvetica, Arial, sans-serif;
+  margin-bottom: 28px;
+}

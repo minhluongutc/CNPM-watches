@@ -1,0 +1,90 @@
+<div>
+  <div class="bag-modal">
+    <div>
+      <h2 class="title">{{ 'Giỏ hàng (' + numberOfItem + ')' | uppercase }}</h2>
+      <svg (click)="onCloseCart(false)" class="icon-cancel" viewBox="0 0 512 512" version="1.1" xml:space="preserve"
+           xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier"> <g
+          id="_x37_12-_close__x2C__cross__x2C__cancel__x2C_"> <g> <line
+          style="fill:none;stroke:#000000;stroke-width:13.4167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2.6131;"
+          x1="486.21" x2="26.739" y1="26.814" y2="486.139"></line>
+          <line
+            style="fill:none;stroke:#000000;stroke-width:13.4167;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2.6131;"
+            x1="486.21" x2="26.739" y1="486.139" y2="26.814"></line> </g> </g>
+          <g id="Layer_1"></g> </g></svg>
+    </div>
+    <div class="bag-content">
+      <!--      <div class="bag-empty">-->
+      <!--        <p class="bag-content-empty">Không có sản phẩm nào trong giỏ hàng</p>-->
+      <!--      </div>-->
+      <div class="bag-list-item">
+        <div class="bag-item" *ngFor="let watch of watchesInCart;">
+          <div class="row">
+            <div class="col l-6">
+              <a routerLink="/watches/{{watch.id}}" class="item-img-link" (click)="onCloseCart(false)">
+                <img
+                  class="item-img"
+                  src="{{watch.img}}"
+                  alt="">
+              </a>
+            </div>
+            <div class="col l-6 text-align--left">
+              <div class="product-line-item__header">
+                <div class="product-name">
+                  <a routerLink="/watches/{{watch.id}}" class="product-name-link"
+                     (click)="onCloseCart(false)">{{ watch.name | uppercase}}</a>
+                </div>
+                <div class="product-close-icon">
+                  <button class="close-icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                      <g id="SVGRepo_iconCarrier">
+                        <circle opacity="0.5" cx="12" cy="12" r="10" stroke="#1C274C" stroke-width="1.5"></circle>
+                        <path d="M14.5 9.50002L9.5 14.5M9.49998 9.5L14.5 14.5" stroke="#1C274C" stroke-width="1.5"
+                              stroke-linecap="round"></path>
+                      </g>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div class="product-desc">
+                <p class="description">{{ watch.description }}</p>
+              </div>
+              <div class="product-price">
+                <div class="price-sales">{{ watch.price | currency }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay__footer">
+      <div class="overlay__footer-content">
+        <div class="row">
+          <div class="col l-6">
+            <p class="text-align--left subtotal">
+              {{ 'Subtotal'| uppercase }}
+            </p>
+          </div>
+          <div class="col l-6">
+            <p class="text-align--right subtotal">
+              {{ total | currency }}
+            </p>
+          </div>
+        </div>
+        <p class="footer-description text-align--left" style="font-size: 17px">Shipping and taxes calculated at
+          checkout.</p>
+        <div class="overlay__footer-actions">
+          <a routerLink="/cart"
+             class="button button--primary width100"
+             (click)="onCloseCart(false)">{{ 'View my shopping bag' | uppercase }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <label class="bag-overlay" (click)="onCloseCart(false)"></label>
+
+</div>
