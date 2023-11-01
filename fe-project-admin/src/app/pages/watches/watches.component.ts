@@ -1,43 +1,61 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource, MatTableModule} from "@angular/material/table";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatIconModule} from "@angular/material/icon";
 import {NgForOf, NgIf} from "@angular/common";
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+import {MatButtonModule} from "@angular/material/button";
+import {MatDialog} from "@angular/material/dialog";
+import {DataStorageService} from "../../core/services/data-storage.service";
+import {Watch} from "../../models/watch.model";
+import {SharedModule} from "../../shared/shared.module";
 
 @Component({
   selector: 'app-watches',
   templateUrl: './watches.component.html',
   styleUrls: ['./watches.component.css'],
   standalone: true,
-  imports: [MatTableModule, MatCheckboxModule, MatIconModule, NgIf, NgForOf],
+  imports: [MatTableModule, MatCheckboxModule, MatIconModule, NgIf, NgForOf, MatButtonModule, SharedModule],
 })
-export class WatchesComponent {
-  displayedColumns: string[] = ['select', 'position', 'name', 'weight', 'weight', 'weight', 'weight', 'weight', 'weight', 'weight', 'weight', 'weight', 'weight', 'weight', 'weight', 'weight', 'weight', 'weight', 'weight', 'symbol', 'star'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  selection = new SelectionModel<PeriodicElement>(true, []);
-  totalElement: number = 100;
-  pageSizeSelected: string = '';
+export class WatchesComponent implements OnInit {
+  watches: Watch[] = [];
+  // displayedColumns: string[] = ['maSanPham'];
+  displayedColumns: string[] = ['select', 'maSanPham', 'tenSanPham', 'giaSanPham', 'slTonKho', 'anhSP', 'moTaSP', 'ngayThemSP', 'maSeri', 'tenLoai', 'tenThuongHieu', 'tenQG', 'baoHanhSP', 'giamGiaSP', 'maSanPham', 'anhChiTietSP', 'kichThuoc', 'tenCCHD', 'loaiDayDeo', 'tenCL', 'tenHinhDang', 'tenmauDD', 'star']
+  dataSource = new MatTableDataSource<Watch>(this.watches);
+  selection = new SelectionModel<Watch>(true, []);
+  pageSizeSelected: string = '5';
+  currentPage: string = '1';
+  isLoading: boolean = false;
+  isLoadingInit: boolean = false;
+  response: any;
+
+  constructor(public dialog: MatDialog, private dataStorageSv: DataStorageService) {
+  }
+
+  ngOnInit() {
+    // console.log(this.isLoading)
+    this.isLoadingInit = true;
+    this.loadData(Number(this.currentPage), Number(this.pageSizeSelected));
+    // this.loadData(1, 1);
+  }
+
+  loadData(pageNo: number, pageSize: number) {
+    this.selection = new SelectionModel<Watch>(true, []);
+    this.isLoading = true;
+    this.dataStorageSv.getWatches(pageNo, pageSize).subscribe((response) => {
+      response.links.shift();
+      response.links.pop();
+      this.watches = response.data;
+      this.response = response;
+      this.dataSource = new MatTableDataSource<Watch>(this.watches);
+      // if (this.currentPage > response.last_page) {
+      //   this.loadData(1, 5);
+      // }
+      this.isLoading = false;
+      this.isLoadingInit = false;
+    });
+
+  }
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
@@ -57,15 +75,25 @@ export class WatchesComponent {
   }
 
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: PeriodicElement): string {
+  checkboxLabel(row?: Watch): string {
     if (!row) {
       return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+    return 'checkboxLabel function';
+    // return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
 
-  onSelected(value: string) {
+  onChangedPageSize(value: string) {
+    this.currentPage = '1';
     this.pageSizeSelected = value;
-    console.log(this.pageSizeSelected)
+    this.isLoading = true;
+    this.loadData(1, Number(this.pageSizeSelected));
   }
+
+  changePage(label: string) {
+    this.currentPage = label;
+    this.isLoading = true;
+    this.loadData(Number(this.currentPage), Number(this.pageSizeSelected));
+  }
+
 }
