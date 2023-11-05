@@ -832,19 +832,3 @@ button {
   position: relative;
   margin-bottom: 45px;
 }
-
-/*
-<meta name="keywords" content="HTML, CSS, JavaScript">
-<meta name="description" content="Free Web tutorials for HTML and CSS">
-<meta name="author" content="John Doe">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-kiểm tra tên người dùng (user name)
-/^[a-z0-9_-]{3,16}$/
-
-kiểm tra email
-/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-
-kiểm tra số điện thoại
-/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/
-*/

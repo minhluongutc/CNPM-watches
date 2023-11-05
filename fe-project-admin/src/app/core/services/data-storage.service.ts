@@ -1,18 +1,23 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Watch} from "../../models/watch.model";
 import {map, Observable, tap} from "rxjs";
-import {WatchService} from "./watch.service";
 
 @Injectable()
 export class DataStorageService {
-  private apiGetWatches = 'http://127.0.0.1:8000/api/product'
+  private apiUrl = 'http://127.0.0.1:8000/api/product/'
+
+  // private apiDeleteWatch = 'http://127.0.0.1:8000/api/product/'
 
   constructor(private http: HttpClient) {
   }
 
   getWatches(pageNo: number, pageSize: number): Observable<any> {
-    const url = `${this.apiGetWatches}?page=${pageNo}&pageSize=${pageSize}`;
+    const url = `${this.apiUrl}?page=${pageNo}&pageSize=${pageSize}`;
     return this.http.get(url);
+  }
+
+  deleteWatch(watchId: string) {
+    const url = `${this.apiUrl}${watchId}`;
+    return this.http.delete(url);
   }
 }

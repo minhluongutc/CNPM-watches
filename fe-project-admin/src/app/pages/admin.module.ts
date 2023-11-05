@@ -6,9 +6,11 @@ import {HomeComponent} from "./home/home.component";
 import {SidebarComponent} from "./sidebar/sidebar.component";
 import {AdminRoutingModule} from "./admin-routing.module";
 import {SharedModule} from "../shared/shared.module";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatTableModule} from "@angular/material/table";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {ToastModule} from "primeng/toast";
+import {AuthComponent} from './auth/auth.component';
 
 
 @NgModule({
@@ -17,14 +19,24 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     FooterComponent,
     HeaderComponent,
     HomeComponent,
-    SidebarComponent
+    SidebarComponent,
+    AuthComponent
   ],
-  imports: [AdminRoutingModule, SharedModule, FormsModule, MatTableModule, MatCheckboxModule],
+  imports: [
+    AdminRoutingModule,
+    SharedModule,
+    FormsModule,
+    MatTableModule,
+    MatCheckboxModule,
+    ToastModule,
+    ReactiveFormsModule,
+  ],
   exports: [
     HeaderComponent,
     SidebarComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    AuthComponent
 
   ]
 

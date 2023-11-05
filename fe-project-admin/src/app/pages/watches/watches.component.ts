@@ -1,21 +1,32 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource, MatTableModule} from "@angular/material/table";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatIconModule} from "@angular/material/icon";
 import {NgForOf, NgIf} from "@angular/common";
 import {MatButtonModule} from "@angular/material/button";
-import {MatDialog} from "@angular/material/dialog";
 import {DataStorageService} from "../../core/services/data-storage.service";
 import {Watch} from "../../models/watch.model";
 import {SharedModule} from "../../shared/shared.module";
+import {ToastModule} from 'primeng/toast';
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-watches',
   templateUrl: './watches.component.html',
   styleUrls: ['./watches.component.css'],
   standalone: true,
-  imports: [MatTableModule, MatCheckboxModule, MatIconModule, NgIf, NgForOf, MatButtonModule, SharedModule],
+  imports: [
+    MatTableModule,
+    MatCheckboxModule,
+    MatIconModule,
+    NgIf,
+    NgForOf,
+    MatButtonModule,
+    SharedModule,
+    ToastModule,
+  ],
+  providers: [MessageService]
 })
 export class WatchesComponent implements OnInit {
   watches: Watch[] = [];
@@ -28,8 +39,11 @@ export class WatchesComponent implements OnInit {
   isLoading: boolean = false;
   isLoadingInit: boolean = false;
   response: any;
+  showDeletePopup: boolean = false;
+  showFormDelete1SP: boolean = false;
+  watchSelected: Watch[] = [];
 
-  constructor(public dialog: MatDialog, private dataStorageSv: DataStorageService) {
+  constructor(private dataStorageSv: DataStorageService, private messageService: MessageService) {
   }
 
   ngOnInit() {
@@ -54,7 +68,31 @@ export class WatchesComponent implements OnInit {
       this.isLoading = false;
       this.isLoadingInit = false;
     });
+  }
 
+  deleteWatch(watchId: string) {
+    this.isLoading = true;
+    this.dataStorageSv.deleteWatch(watchId).subscribe(
+      () => {
+        this.loadData(Number(this.currentPage), Number(this.pageSizeSelected));
+        this.showSuccess();
+      },
+      (error) => {
+        console.error('Error deleting product: ', error);
+      })
+    this.showFormDelete1SP = false;
+  }
+
+  deleteWatches(watchId: string) {
+    this.dataStorageSv.deleteWatch(watchId).subscribe(
+      () => {
+        this.loadData(Number(this.currentPage), Number(this.pageSizeSelected));
+        this.showSuccess();
+      },
+      (error) => {
+        console.error('Error deleting product: ', error);
+      })
+    this.showDeletePopup = false;
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -96,4 +134,27 @@ export class WatchesComponent implements OnInit {
     this.loadData(Number(this.currentPage), Number(this.pageSizeSelected));
   }
 
+  showDeletePopupFn() {
+    this.showDeletePopup = true;
+  }
+
+
+  hideDeletePopupFn() {
+    this.showDeletePopup = false
+  }
+
+  showSuccess() {
+    this.messageService.add({severity: 'success', summary: 'Thành công', detail: 'Xóa thành công 1 sản phẩm.'});
+    console.log('sos')
+  }
+
+  showDeletePopupFn1SP(watch: Watch) {
+    this.showFormDelete1SP = true;
+    this.watchSelected[0] = watch;
+  }
+
+  hideDeletePopupFn1SP() {
+    this.showFormDelete1SP = false
+    this.watchSelected = [];
+  }
 }
