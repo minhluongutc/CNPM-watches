@@ -1,0 +1,197 @@
+
+.login-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.login {
+  margin-top: 86px;
+}
+
+.login__tab-list {
+  margin: 80px 0;
+  text-align: center;
+}
+
+.login__tab-item {
+  font-size: 26px;
+  text-decoration: none;
+  color: var(--text-color);
+  margin: 0 27px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.login__tab-item:hover {
+  text-decoration: underline;
+}
+
+.active {
+  -webkit-text-stroke-width: 0.0625rem;
+  text-decoration: underline;
+}
+
+.tab-content {
+  margin: 0 150px 80px;
+  min-height: 500px;
+  padding: 80px 0;
+  background-color: #f9f9f9;
+}
+
+.form {
+  width: 376px;
+  margin: auto;
+}
+
+/* login, register form */
+.form-intro {
+  margin-bottom: 28px;
+  color: var(--text-color);
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 45px;
+}
+
+.form-required {
+  text-align: right;
+  font-size: 17px;
+  color: #8c8c8c;
+}
+
+
+.form-forgot {
+  margin-bottom: 16px;
+}
+
+.forgot-link {
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.policy-link {
+  color: var(--text-color);
+}
+
+.forgot-link:hover, .policy-link:hover {
+  opacity: .6;
+}
+
+/* register form */
+
+.form-control-label {
+  font-size: 17px;
+  color: #8c8c8c;
+  margin-bottom: 8px;
+}
+
+.form-check-group {
+  display: flex;
+  margin-top: -8px;
+  margin-bottom: -22px;
+}
+
+.form-check__item {
+  margin: 13px 32px 13px 0;
+}
+
+.form-check-label--radio {
+  padding-left: 16px;
+}
+
+.form-control--select {
+  width: 100%;
+  height: 34px;
+  border-top: none;
+  font-size: 16px;
+  color: var(--text-color);
+  background-color: #f9f9f9;
+  outline: none;
+}
+
+
+.form-input {
+  background-color: #f9f9f9;
+  font-size: 16px;
+  padding: 14px 10px 2px 0px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #757575;
+}
+
+.form-input__error {
+  border-bottom: 1px solid red !important;
+}
+
+.form-input:focus {
+  outline: none;
+}
+
+.form-label {
+  color: #8c8c8c;
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  /*bottom: 8px;*/
+  top: 10px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+.form-input:focus ~ .form-label, .form-input:valid ~ .form-label {
+  top: -11px;
+  /*bottom: 29px;*/
+  font-size: 16px;
+  color: #8c8c8c;
+}
+
+/* BOTTOM BARS ================================= */
+.bar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.bar:before, .bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 0px;
+  position: absolute;
+  background: #000;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.bar:before {
+  left: 50%;
+}
+
+.bar:after {
+  right: 50%;
+}
+
+/* active state */
+.form-input:focus ~ .bar:before, .form-input:focus ~ .bar:after {
+  width: 50%;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 45px;
+}

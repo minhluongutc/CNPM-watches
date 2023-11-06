@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bc5b466d-75f6-418d-a530-7c472489d301" name="Changes" comment="create form edit, insert">
+      <change afterPath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/watchBrand.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/watchCCHD.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/watchMaterial.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/watchShape.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/watchSize.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/watchStrap.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/watchType.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project-admin/src/app/core/core.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project-admin/src/app/core/core.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/data-storage.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/watch.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/watch.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project-admin/src/app/pages/watches/watches.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project-admin/src/app/pages/watches/watches.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project-admin/src/app/pages/watches/watches.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project-admin/src/app/pages/watches/watches.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project-admin/src/app/pages/watches/watches.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project-admin/src/app/pages/watches/watches.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project-admin/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project-admin/src/styles.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;minhluongutc&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="401038dc-bfcf-4f8c-8372-6bfba14dcba8" />
+        <option name="url" value="https://github.com/minhluongutc/CNPM-watches.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2XNVCbO68LDubIpBC9CB46AhnCW" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/K1N4/CNPM/project/fe-project-admin/src/app/core/services&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\K1N4\\CNPM\\project\\fe-project-admin\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\K1N4\CNPM\project\fe-project-admin\src\app\core\services" />
+      <recent name="D:\K1N4\CNPM\project\fe-project-admin\src\app\pages" />
+      <recent name="D:\K1N4\CNPM\project\fe-project-admin\src\app\shared\components" />
+      <recent name="D:\K1N4\CNPM\project\fe-project-admin\src\app\shared" />
+      <recent name="D:\K1N4\CNPM\project\fe-project-admin\src\app\shared\directive" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.admin project">
+    <configuration default="true" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/fe-project/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="admin project" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/fe-project-admin/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <package-manager value="npm" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="client project" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/fe-project/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="npm.admin project" />
+      <item itemvalue="npm.client project" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bc5b466d-75f6-418d-a530-7c472489d301" name="Changes" comment="" />
+      <created>1698469398005</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1698469398005</updated>
+      <workItem from="1698469399058" duration="1326000" />
+      <workItem from="1698473873539" duration="27000" />
+      <workItem from="1698479694499" duration="1795000" />
+      <workItem from="1698637150202" duration="2469000" />
+      <workItem from="1698650236907" duration="1403000" />
+      <workItem from="1698655349859" duration="2905000" />
+      <workItem from="1698677072290" duration="5650000" />
+      <workItem from="1698683307827" duration="3925000" />
+      <workItem from="1698713401010" duration="4649000" />
+      <workItem from="1698756046537" duration="16898000" />
+      <workItem from="1698798375228" duration="6871000" />
+      <workItem from="1698806365724" duration="2525000" />
+      <workItem from="1698826299456" duration="23000" />
+      <workItem from="1698826341281" duration="8668000" />
+      <workItem from="1698838620824" duration="17736000" />
+      <workItem from="1698885456397" duration="689000" />
+      <workItem from="1698898705079" duration="2585000" />
+      <workItem from="1698905448230" duration="9864000" />
+      <workItem from="1699029324802" duration="3824000" />
+      <workItem from="1699059655793" duration="12390000" />
+      <workItem from="1699075824649" duration="3237000" />
+      <workItem from="1699084999270" duration="2757000" />
+      <workItem from="1699145089659" duration="16876000" />
+      <workItem from="1699179735881" duration="396000" />
+      <workItem from="1699188363744" duration="8607000" />
+      <workItem from="1699201697485" duration="7552000" />
+      <workItem from="1699233153822" duration="967000" />
+      <workItem from="1699237912760" duration="5875000" />
+      <workItem from="1699256456143" duration="8158000" />
+    </task>
+    <task id="LOCAL-00001" summary="sss">
+      <option name="closed" value="true" />
+      <created>1698469992436</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1698469992436</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update table watches">
+      <option name="closed" value="true" />
+      <created>1698852119602</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698852119602</updated>
+    </task>
+    <task id="LOCAL-00003" summary="auth jwt login, logout, auto login, auto logout">
+      <option name="closed" value="true" />
+      <created>1699148293879</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1699148293879</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="sss" />
+    <MESSAGE value="update table watches" />
+    <MESSAGE value="auth jwt login, logout, auto login, auto logout" />
+    <MESSAGE value="create form edit, insert" />
+    <option name="LAST_COMMIT_MESSAGE" value="create form edit, insert" />
+  </component>
+</project>

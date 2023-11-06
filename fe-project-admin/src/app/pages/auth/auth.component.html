@@ -1,0 +1,54 @@
+<div class="login-form">
+  <div *ngIf="isLoading" style="    position: absolute;">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <form [formGroup]="loginForm" class="login-container">
+    <h2 class="form-intro text-align--center">Login</h2>
+    <p class="form-required">Required field*</p>
+    <div class="form-group">
+      <input type="text" class="form-input" required formControlName="username"
+             [class.form-input__error]="username?.invalid && username?.touched">
+      <span class="bar"></span>
+      <label class="form-label">Username*</label>
+      <span *ngIf="username?.invalid && username?.touched" class="help-block">
+        <span *ngIf="username?.errors?.['required']" class="red">
+          Error - This field is required
+        </span>
+      </span>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-input" required formControlName="password"
+             [class.form-input__error]="password?.invalid && password?.touched">
+      <span class="bar"></span>
+      <label class="form-label">Password*</label>
+      <span *ngIf="password?.invalid && password?.touched" class="help-block">
+      <span *ngIf="password?.errors?.['required']" class="red">
+        Error - This field is required
+      <br>
+      </span>
+      <span *ngIf="!password?.errors?.['minLength']" class="red">
+        Error - This field is greater than 6
+      </span>
+    </span>
+    </div>
+    <div class="form-group">
+      <div class="form-forgot">
+        <a href="" class="forgot-link">Forgot your password?</a>
+      </div>
+      <div class="form-policy">
+        <p class="policy-intro">Read the
+          <a href="" class="policy-link">Privacy Policy</a>
+          for further information
+        </p>
+      </div>
+    </div>
+    <div class="form-actions text-align--center">
+      <button type="submit" class="button button--primary" (click)="onSubmit(loginForm)" [disabled]="loginForm.invalid">
+        Login
+      </button>
+    </div>
+
+  </form>
+
+</div>
+<p-toast></p-toast>
