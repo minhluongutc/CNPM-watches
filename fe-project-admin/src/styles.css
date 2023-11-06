@@ -888,6 +888,18 @@ th.mat-sort-header-sorted {
   left: 50%;
 }
 
+.popup-add {
+  background-color: #fff;
+  height: 80%;
+  border-radius: 8px;
+  z-index: 6;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  width: 80%;
+  left: 50%;
+}
+
 .popup-delete--title {
   font-size: 22px;
   margin: 15px;

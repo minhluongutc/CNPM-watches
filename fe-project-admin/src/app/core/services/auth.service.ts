@@ -7,8 +7,8 @@ import {Router} from "@angular/router";
 
 @Injectable()
 export class AuthService {
-  private signupUrl: string = 'http://127.0.0.1:8000/api/auth/register'
-  private loginUrl: string = 'http://127.0.0.1:8000/api/auth/login';
+  private signupUrl: string = 'http://127.0.0.1:8000/api/auth/admin/register'
+  private loginUrl: string = 'http://127.0.0.1:8000/api/auth/admin/login';
   private tokenExpirationTimer: any;
   // @ts-ignore
   user: BehaviorSubject<User> = new BehaviorSubject<User>(null);

@@ -1,0 +1,18 @@
+.form-group {
+  padding-left: 10%;
+  margin-bottom: 24px;
+}
+
+.form-title {
+  padding-bottom: 4px;
+  font-size: 18px;
+}
+
+.form-input {
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  width: 80%;
+  text-align: center;
+}
+

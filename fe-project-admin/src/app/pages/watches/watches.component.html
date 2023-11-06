@@ -1,8 +1,11 @@
 <div class="container">
   <h1 class="title-list">Danh sách đồng hồ</h1>
   <div class="search-form">
-    <input class="search-input" type="text" placeholder="Tên, chất liệu, giá,...">
-    <svg class="search-icon" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+    <input [(ngModel)]="searchQuery" (input)="onInputChange()" (keydown.enter)="enterOrClickSearch()"
+           class="search-input"
+           type="text"
+           placeholder="Tên, chất liệu, kích thước ...">
+    <svg class="search-icon" (click)="enterOrClickSearch()" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
          xmlns="http://www.w3.org/2000/svg">
       <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
       <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -32,7 +35,7 @@
         </button>
       </div>
       <div class="add-button">
-        <button class="button--primary" (click)="showSuccess()">Thêm mới</button>
+        <button class="button--primary" (click)="showAddFormFn()">Thêm mới</button>
       </div>
     </div>
   </div>
@@ -180,7 +183,7 @@
         <th mat-header-cell *matHeaderCellDef aria-label="row actions" style="background-color: #fff">Thao tác</th>
         <td mat-cell *matCellDef="let watch">
           <div class="action">
-            <div class="edit-icon">
+            <div class="edit-icon" (click)="showUpdateFormFn(editForm, watch)">
               <svg width="25px" height="25px" viewBox="0 0 24 24"
                    fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -300,12 +303,12 @@
       </g>
     </svg>
     <p class="popup-delete--description">
-      Bạn có muốn xóa sản phẩm <strong>{{watchSelected[0].tenSanPham}}</strong> ra khỏi hệ thông không?
+      Bạn có muốn xóa sản phẩm <strong>{{watchSelected.tenSanPham}}</strong> ra khỏi hệ thông không?
     </p>
     <div class="popup-delete--action">
       <button class="button--secondary" (click)="hideDeletePopupFn1SP()">Hủy</button>
       <button class="button--primary"
-              (click)="deleteWatch(watchSelected[0].maSanPham)">Xóa
+              (click)="deleteWatch(watchSelected.maSanPham)">Xóa
       </button>
     </div>
   </div>
@@ -345,10 +348,207 @@
     <div class="popup-delete--action">
       <button class="button--secondary" (click)="hideDeletePopupFn()">Hủy</button>
       <button class="button--primary"
-              (click)="deleteWatches(selection.selected[0].maSanPham)">Xóa
+              (click)="deleteWatches(idsSelected)">Xo
       </button>
     </div>
   </div>
+</div>
+
+<!-- form thêm sản phẩm -->
+<div *ngIf="showAddPopup" style="transition: all linear 0.5s">
+  <div class="overlay" (click)="hideAddFormFn()"></div>
+
+  <form class="popup-add" [formGroup]="addForm">
+    <h1 class="popup-delete--title">Thêm sản phẩm</h1>
+    <div class="row no-gutters">
+      <div class="col l-4">
+        <div class="form-group">
+          <p class="form-title">Tên sản phẩm</p>
+          <input formControlName="name" class="form-input" type="text">
+        </div>
+        <div class="form-group">
+          <p class="form-title">Cơ Cấu hoạt động</p>
+          <select formControlName="CCHD" class="form-input">
+            <option class="form-input-option" value="" selected disabled hidden style="color: #cccccc">---------- Chọn
+              ----------
+            </option>
+            <option *ngFor="let CCHD of watchCCHDs;" value="{{CCHD.maCCHD}}"
+                    class="form-input-option">{{CCHD.tenCCHD}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <p class="form-title">Loại</p>
+          <select formControlName="type" class="form-input">
+            <option class="form-input-option" value="" selected disabled hidden>---------- Chọn ----------</option>
+            <option *ngFor="let type of watchTypes;" value="{{type.maLoai}}"
+                    class="form-input-option">{{type.tenLoai}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <p class="form-title">Thương hiệu</p>
+          <select formControlName="brand" class="form-input">
+            <option class="form-input-option" value="" selected disabled hidden>---------- Chọn ----------</option>
+            <option *ngFor="let brand of watchBrands;" value="{{brand.maThuongHieu}}"
+                    class="form-input-option">{{brand.tenThuongHieu}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col l-4">
+        <div class="form-group">
+          <p class="form-title">Kích thước</p>
+          <select formControlName="size" class="form-input" value="">
+            <option class="form-input-option" value="" selected disabled hidden>---------- Chọn ----------</option>
+            <option *ngFor="let size of watchSizes;" value="{{size.maKichThuoc}}"
+                    class="form-input-option">{{size.kichThuoc}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <p class="form-title">Hình dạng</p>
+          <select formControlName="shape" class="form-input">
+            <option class="form-input-option" value="" selected disabled hidden>---------- Chọn ----------</option>
+            <option *ngFor="let shape of watchShapes;" value="{{shape.maHinhDang}}"
+                    class="form-input-option">{{shape.tenHinhDang}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <p class="form-title">Chất liệu</p>
+          <select formControlName="material" class="form-input">
+            <option class="form-input-option" value="" selected disabled hidden>---------- Chọn ----------</option>
+            <option *ngFor="let material of watchMaterials;" value="{{material.maCL}}"
+                    class="form-input-option">{{material.tenCL}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <p class="form-title">Dây đeo</p>
+          <select formControlName="strap" class="form-input">
+            <option class="form-input-option" value="" selected disabled hidden>---------- Chọn ----------</option>
+            <option *ngFor="let strap of watchStraps;" value="{{strap.maDayDeo}}"
+                    class="form-input-option">{{strap.loaiDayDeo}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col l-4">
+        <div class="form-group">
+          <p class="form-title">Giá sản phẩm</p>
+          <input formControlName="price" class="form-input" type="text">
+        </div>
+        <div class="form-group">
+          <p class="form-title">Ảnh sản phẩm</p>
+          <input formControlName="image" class="form-input" type="text">
+        </div>
+        <div class="form-group">
+          <p class="form-title">Mô tả sản phẩm</p>
+          <input formControlName="description" class="form-input" type="text">
+        </div>
+      </div>
+      <div *ngIf="isLoadingForm" style="    position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 10;
+        transform: translate(-50%, -50%);">
+        <app-loading-spinner></app-loading-spinner>
+      </div>
+    </div>
+    <div class="popup-delete--action">
+      <button class="button--secondary" (click)="hideAddFormFn()">Hủy</button>
+      <button class="button--primary" (click)="onAdd(addForm)">Thêm
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- form sửa sản phẩm -->
+<div *ngIf="showUpdatePopup" style="transition: all linear 0.5s">
+  <div class="overlay" (click)="hideUpdateFormFn()"></div>
+  <form class="popup-add" [formGroup]="editForm">
+    <h1 class="popup-delete--title">Sửa sản phẩm</h1>
+    <div class="row no-gutters">
+      <div class="col l-4">
+        <div class="form-group">
+          <p class="form-title">Tên sản phẩm</p>
+          <input formControlName="name" class="form-input" type="text" [value]="editForm.controls['name'].value">
+        </div>
+        <div class="form-group">
+          <p class="form-title">Cơ Cấu hoạt động</p>
+          <select formControlName="CCHD" class="form-input" [(ngModel)]="maCCHDSelected">
+            <option *ngFor="let CCHD of watchCCHDs; let i = index" value="{{CCHD.maCCHD}}"
+                    class="form-input-option"
+            >{{CCHD.tenCCHD}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <p class="form-title">Loại</p>
+          <select formControlName="type" class="form-input" [(ngModel)]="maLoaiSelected">
+            <option *ngFor="let type of watchTypes;" value="{{type.maLoai}}"
+                    class="form-input-option">{{type.tenLoai}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <p class="form-title">Thương hiệu</p>
+          <select formControlName="brand" class="form-input" [(ngModel)]="maThuongHieuSelected">
+            <option *ngFor="let brand of watchBrands;" value="{{brand.maThuongHieu}}"
+                    class="form-input-option">{{brand.tenThuongHieu}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col l-4">
+        <div class="form-group">
+          <p class="form-title">Kích thước</p>
+          <select formControlName="size" class="form-input" [(ngModel)]="maKichThuocSelected">
+            <option *ngFor="let size of watchSizes;" value="{{size.maKichThuoc}}"
+                    class="form-input-option">{{size.kichThuoc}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <p class="form-title">Hình dạng</p>
+          <select formControlName="shape" class="form-input" [(ngModel)]="maHinhDangSelected">
+            <option *ngFor="let shape of watchShapes;" value="{{shape.maHinhDang}}"
+                    class="form-input-option">{{shape.tenHinhDang}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <p class="form-title">Chất liệu</p>
+          <select formControlName="material" class="form-input" [(ngModel)]="maChatLieuSelected">
+            <option *ngFor="let material of watchMaterials;" value="{{material.maCL}}"
+                    class="form-input-option">{{material.tenCL}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <p class="form-title">Dây đeo</p>
+          <select formControlName="strap" class="form-input" [(ngModel)]="maDayDeoSelected">
+            <option *ngFor="let strap of watchStraps;" value="{{strap.maDayDeo}}"
+                    class="form-input-option">{{strap.loaiDayDeo}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col l-4">
+        <div class="form-group">
+          <p class="form-title">Giá sản phẩm</p>
+          <input formControlName="price" class="form-input" type="text" [value]="watchSelected.giaSanPham">
+        </div>
+        <div class="form-group">
+          <p class="form-title">Ảnh sản phẩm</p>
+          <input formControlName="image" class="form-input" type="text" [value]="watchSelected.anhSP">
+        </div>
+        <div class="form-group">
+          <p class="form-title">Mô tả sản phẩm</p>
+          <input formControlName="description" class="form-input" type="text" [value]="watchSelected.moTaSP">
+        </div>
+      </div>
+      <div *ngIf="isLoadingForm" style="    position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 10;
+        transform: translate(-50%, -50%);">
+        <app-loading-spinner></app-loading-spinner>
+      </div>
+    </div>
+    <div class="popup-delete--action">
+      <button class="button--secondary" (click)="hideUpdateFormFn()">Hủy</button>
+      <button class="button--primary" (click)="onEdit(editForm)">Sửa</button>
+    </div>
+  </form>
+
 </div>
 
 <!--<button type="button" pButton pRipple (click)="show()" label="Show" class="p-button-success"></button>-->
