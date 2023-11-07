@@ -10,7 +10,7 @@ import {Watch} from "../../models/watch.model";
 import {SharedModule} from "../../shared/shared.module";
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from "primeng/api";
-import {debounceTime, distinctUntilChanged, Observable, Subject, switchMap} from "rxjs";
+import {debounceTime, distinctUntilChanged, switchMap} from "rxjs";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {WatchSizeService} from "../../core/services/watchSize.service";
 import {WatchCCHDService} from "../../core/services/watchCCHD.service";

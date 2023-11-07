@@ -5,21 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc5b466d-75f6-418d-a530-7c472489d301" name="Changes" comment="create form edit, insert">
-      <change afterPath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/watchBrand.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/watchCCHD.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/watchMaterial.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/watchShape.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/watchSize.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/watchStrap.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/watchType.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe-project-admin/src/app/core/core.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project-admin/src/app/core/core.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/data-storage.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/watch.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project-admin/src/app/core/services/watch.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fe-project-admin/src/app/pages/watches/watches.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project-admin/src/app/pages/watches/watches.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fe-project/src/app/core/models/AuthResponseData.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fe-project/src/app/core/models/user.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fe-project/src/app/core/services/auth-guard.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fe-project/src/app/core/services/auth-interceptor.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fe-project/src/app/core/services/auth.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fe-project/src/app/shared/components/loading-spinner/loading-spinner.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fe-project/src/app/shared/components/loading-spinner/loading-spinner.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fe-project/src/app/shared/directive/dropdown.directive.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project-admin/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project-admin/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project-admin/src/app/pages/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project-admin/src/app/pages/header/header.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fe-project-admin/src/app/pages/watches/watches.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project-admin/src/app/pages/watches/watches.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fe-project-admin/src/app/pages/watches/watches.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project-admin/src/app/pages/watches/watches.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fe-project-admin/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project-admin/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project/src/app/core/core.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project/src/app/core/core.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project/src/app/pages/home/header/header-main/header-main.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project/src/app/pages/home/header/header-main/header-main.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project/src/app/pages/home/header/header-main/header-main.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project/src/app/pages/home/header/header-main/header-main.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project/src/app/pages/home/header/header-main/header-main.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project/src/app/pages/home/header/header-main/header-main.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project/src/app/pages/home/home.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project/src/app/pages/home/home.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project/src/app/pages/home/login-list/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project/src/app/pages/home/login-list/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project/src/app/pages/home/login-list/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project/src/app/pages/home/login-list/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project/src/app/pages/home/login-list/register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project/src/app/pages/home/login-list/register/register.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project/src/app/pages/home/login-list/register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project/src/app/pages/home/login-list/register/register.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project/src/app/shared/shared.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project/src/app/shared/shared.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-project/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/fe-project/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +85,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/K1N4/CNPM/project/fe-project-admin/src/app/core/services&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/K1N4/CNPM/project/fe-project/src/app/shared/directive&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -82,14 +98,14 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\K1N4\CNPM\project\fe-project\src\app\shared\directive" />
+      <recent name="D:\K1N4\CNPM\project\fe-project\src\app\core\services" />
+      <recent name="D:\K1N4\CNPM\project\fe-project\src\app\shared\components" />
       <recent name="D:\K1N4\CNPM\project\fe-project-admin\src\app\core\services" />
       <recent name="D:\K1N4\CNPM\project\fe-project-admin\src\app\pages" />
-      <recent name="D:\K1N4\CNPM\project\fe-project-admin\src\app\shared\components" />
-      <recent name="D:\K1N4\CNPM\project\fe-project-admin\src\app\shared" />
-      <recent name="D:\K1N4\CNPM\project\fe-project-admin\src\app\shared\directive" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.admin project">
+  <component name="RunManager" selected="npm.client project">
     <configuration default="true" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/fe-project/package.json" />
       <command value="run" />
@@ -165,7 +181,9 @@
       <workItem from="1699201697485" duration="7552000" />
       <workItem from="1699233153822" duration="967000" />
       <workItem from="1699237912760" duration="5875000" />
-      <workItem from="1699256456143" duration="8158000" />
+      <workItem from="1699256456143" duration="10004000" />
+      <workItem from="1699269445423" duration="7672000" />
+      <workItem from="1699279786701" duration="7338000" />
     </task>
     <task id="LOCAL-00001" summary="sss">
       <option name="closed" value="true" />
@@ -191,7 +209,23 @@
       <option name="project" value="LOCAL" />
       <updated>1699148293879</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="create form edit, insert">
+      <option name="closed" value="true" />
+      <created>1699264943142</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1699264943142</updated>
+    </task>
+    <task id="LOCAL-00005" summary="create form edit, insert">
+      <option name="closed" value="true" />
+      <created>1699264969485</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1699264969485</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

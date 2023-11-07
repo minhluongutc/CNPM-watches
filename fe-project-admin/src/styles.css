@@ -917,14 +917,14 @@ th.mat-sort-header-sorted {
   gap: 12px;
 }
 
-p-toast {
-  padding: 10px;
-}
+/*p-toast {*/
+/*  padding: 10px;*/
+/*}*/
 
-p-toastitem {
-  padding: 10px 8px;
-}
+/*p-toastitem {*/
+/*  padding: 10px 8px;*/
+/*}*/
 
-.p-toast-detail {
-  padding-top: 10px
-}
+/*.p-toast-detail {*/
+/*  padding-top: 10px*/
+/*}*/

@@ -16,57 +16,68 @@
     </div>
   </div>
   <div class="form-group">
-    <input type="text" class="form-input" required formControlName="firstName"
-           [class.form-input__error]="firstName?.invalid && firstName?.touched">
+    <input type="text" class="form-input" required formControlName="fullName"
+           [class.form-input__error]="fullName?.invalid && fullName?.touched">
     <span class="bar"></span>
-    <label class="form-label">First Name*</label>
+    <label class="form-label">Họ và tên *</label>
 
-    <span *ngIf="firstName?.invalid && firstName?.touched">
-      <span *ngIf="firstName?.errors?.['required']" class="red">
-        Error - This field is required
-        <br>
-      </span>
-      <span *ngIf="firstName?.errors?.['pattern']" class="red">
-        Error - This field can not is number
-      </span>
+    <span *ngIf="fullName?.invalid && fullName?.touched" class="help-block">
+          <span *ngIf="fullName?.errors?.['required']" class="red">
+            Vui lòng nhập họ tên.
+          </span>
+          <span *ngIf="fullName?.errors?.['pattern']" class="red">
+            Vui lòng nhập ký tự khác số.
+          </span>
+        </span>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-input" required formControlName="address"
+           [class.form-input__error]="address?.invalid && address?.touched">
+    <span class="bar"></span>
+    <label class="form-label">Địa chỉ *</label>
+
+    <span *ngIf="address?.invalid && address?.touched" class="help-block">
+          <span *ngIf="address?.errors?.['required']" class="red">
+            Vui lòng nhập địa chỉ.
+          </span>
     </span>
   </div>
   <div class="form-group">
-    <input type="text" class="form-input" required formControlName="lastName" (input)="lastNameInput($event)"
-           [class.form-input__error]="lastName?.invalid && lastName?.touched">
+    <input type="text" class="form-input" required formControlName="phoneNumber"
+           [class.form-input__error]="phoneNumber?.invalid && phoneNumber?.touched">
     <span class="bar"></span>
-    <label class="form-label">Last Name*</label>
+    <label class="form-label">Số điện thoại *</label>
 
-    <span *ngIf="lastName?.invalid && lastName?.touched" class="help-block">
-      <span *ngIf="lastName?.errors?.['required']" class="red">
-        Error - This field is required
-      </span>
-      <span *ngIf="firstName?.errors?.['pattern']" class="red">
-        Error - This field can not is number
-      </span>
-    </span>
+    <span *ngIf="phoneNumber?.invalid && phoneNumber?.touched" class="help-block">
+          <span *ngIf="phoneNumber?.errors?.['required']" class="red">
+            Vui lòng nhập số điện thoại.
+          </span>
+      <!--          <span *ngIf="phoneNumber?.errors?.['pattern']" class="red">-->
+      <!--            Vui lòng nhập ký tự khác số.-->
+      <!--          </span>-->
+        </span>
   </div>
-  <p class="form-control-label">Date of Birth</p>
-  <div class="row no-gutters form-group">
-    <div class="col l-4">
-      <select class="form-control--select">
-        <option>Day</option>
-        <option *ngFor="let day of days" [id]="day" [value]="day">{{ day }}</option>
-      </select>
-    </div>
-    <div class="col l-4">
-      <select class="form-control--select" style="border-left: none; border-right: none;">
-        <option>Month</option>
-        <option *ngFor="let month of months" [id]="month" [value]="month">{{ month }}</option>
-      </select>
-    </div>
-    <div class="col l-4">
-      <select class="form-control--select">
-        <option>Year</option>
-        <option *ngFor="let year of years" [id]="year" [value]="year">{{ year }}</option>
-      </select>
-    </div>
-  </div>
+  <!--  <p class="form-control-label">Date of Birth</p>-->
+  <!--  <div class="row no-gutters form-group">-->
+  <!--    <div class="col l-4">-->
+  <!--      <select class="form-control&#45;&#45;select">-->
+  <!--        <option>Day</option>-->
+  <!--        <option *ngFor="let day of days" [id]="day" [value]="day">{{ day }}</option>-->
+  <!--      </select>-->
+  <!--    </div>-->
+  <!--    <div class="col l-4">-->
+  <!--      <select class="form-control&#45;&#45;select" style="border-left: none; border-right: none;">-->
+  <!--        <option>Month</option>-->
+  <!--        <option *ngFor="let month of months" [id]="month" [value]="month">{{ month }}</option>-->
+  <!--      </select>-->
+  <!--    </div>-->
+  <!--    <div class="col l-4">-->
+  <!--      <select class="form-control&#45;&#45;select">-->
+  <!--        <option>Year</option>-->
+  <!--        <option *ngFor="let year of years" [id]="year" [value]="year">{{ year }}</option>-->
+  <!--      </select>-->
+  <!--    </div>-->
+  <!--  </div>-->
   <div class="form-group">
     <input type="text" class="form-input" required formControlName="email"
            [class.form-input__error]="email?.invalid && email?.touched">
@@ -138,7 +149,12 @@
     </div>
   </div>
   <div class="form-actions text-align--center">
-    <button type="submit" class="button button--primary" style="width: 100%;" (click)="onSubmit()" [disabled]="signupForm.invalid">Create Account</button>
+    <button type="submit" class="button button--primary" style="width: 100%;" (click)="onSubmit(signupForm)"
+            [disabled]="signupForm.invalid">Create Account
+    </button>
   </div>
-
 </form>
+<div *ngIf="isLoading" style="display: block;text-align: center;padding-top: 24px;">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+<p-toast></p-toast>

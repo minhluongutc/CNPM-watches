@@ -1,11 +1,15 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+
 /* You can add global styles to this file, and also import other style files */
 :root {
   --text-color: #1D1C1C;
 }
 
 * {
-  padding: 0;
-  margin: 0;
+  /*padding: 0;*/
+  /*margin: 0;*/
   box-sizing: border-box;
   /*font-family: Brilliant Cut, Almarai, Helvetica, Arial, sans-serif;*/
   font-family: Fancy Cut, Almarai, Times, serif;
@@ -831,4 +835,39 @@ button {
 .form-group {
   position: relative;
   margin-bottom: 45px;
+}
+
+
+.dropdown, .dropup {
+  position: relative;
+}
+
+.open > .dropdown-menu {
+  display: block;
+  padding: 0;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 140px;
+  margin: 2px 0 0;
+  font-size: 15px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .175)
+}
+
+.dropdown-toggle:focus {
+  outline: 0
 }

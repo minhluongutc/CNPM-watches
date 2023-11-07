@@ -15,6 +15,7 @@ import {WatchesModule} from "./watches/watches.module";
 import {SharedModule} from "../../shared/shared.module";
 import {CoreModule} from "../../core/core.module";
 import {ReactiveFormsModule} from "@angular/forms";
+import {ToastModule} from "primeng/toast";
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     SharedModule,
     NgOptimizedImage,
     ReactiveFormsModule,
+    ToastModule,
   ]
 })
 export class HomeModule {

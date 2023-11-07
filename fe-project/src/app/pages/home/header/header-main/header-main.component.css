@@ -97,3 +97,18 @@
   justify-content: flex-end;
   margin-bottom: 20px;
 }
+
+
+.dropdown-item {
+  padding: 8px 4px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.dropdown-item:hover {
+  background-color: #ccc;
+}
+
+.isAuth {
+  fill: red;
+}

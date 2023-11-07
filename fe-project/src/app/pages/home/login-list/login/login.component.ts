@@ -1,5 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "../../../../core/services/auth.service";
+import {MessageService} from "primeng/api";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -8,6 +11,10 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup<any>({});
+  isLoading = false;
+
+  constructor(private authService: AuthService, private messageService: MessageService, private router: Router) {
+  }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup(
@@ -26,8 +33,32 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  onSubmit() {
+  onSubmit(form: FormGroup) {
+    this.isLoading = true;
     console.log(this.loginForm);
+    const email = form.value.email;
+    const password = form.value.password;
+    this.authService.login(email, password).subscribe(
+      (res) => {
+        console.log(res);
+
+        this.isLoading = false;
+        this.showSuccess('Đăng nhập thành công.');
+        this.router.navigate(['/']);
+      },
+      (error) => {
+        this.showError();
+      }
+    );
+
+  }
+
+  showSuccess(message: string) {
+    this.messageService.add({severity: 'success', summary: 'Thành công', detail: message});
+  }
+
+  showError() {
+    this.messageService.add({severity: 'error', summary: 'Thất bại', detail: 'Lỗi hệ thống.'});
   }
 
 

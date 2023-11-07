@@ -6,6 +6,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {CoreModule} from "./core/core.module";
 import {HomeModule} from "./pages/home/home.module";
 import {CommonModule} from "@angular/common";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,7 +15,8 @@ import {CommonModule} from "@angular/common";
     AppRoutingModule,
     HomeModule,
     CoreModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
