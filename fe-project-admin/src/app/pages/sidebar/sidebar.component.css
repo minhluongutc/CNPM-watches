@@ -33,3 +33,32 @@
 .tab-item:hover {
   background-color: #163479;
 }
+
+.tab-item-menu {
+  background-color: #0F4AA4;
+  border: none;
+  width: 100%;
+  color: #fff;
+  padding: 15px 23px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/*.toggle-icon {*/
+
+/*}*/
+
+.tab-item-menu:hover {
+  background-color: #163479;
+}
+
+.menu-item {
+  padding-left: 45px;
+}
+
+

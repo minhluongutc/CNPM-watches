@@ -12,6 +12,7 @@ import {WatchMaterialService} from "./services/watchMaterial.service";
 import {WatchShapeService} from "./services/watchShape.service";
 import {WatchStrapService} from "./services/watchStrap.service";
 import {WatchTypeService} from "./services/watchType.service";
+import {StatisticsService} from "./services/statistics.service";
 
 @NgModule({
   providers: [
@@ -27,6 +28,7 @@ import {WatchTypeService} from "./services/watchType.service";
     WatchShapeService,
     WatchStrapService,
     WatchTypeService,
+    StatisticsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,

@@ -9,6 +9,7 @@ import {CoreModule} from "./core/core.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastModule} from "primeng/toast";
 import {MessageService} from "primeng/api";
+import {StatisticsModule} from "./pages/statistics/statistics.module";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {MessageService} from "primeng/api";
     CoreModule,
     BrowserAnimationsModule,
     ToastModule,
+    StatisticsModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

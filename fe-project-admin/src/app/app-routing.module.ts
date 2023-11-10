@@ -4,7 +4,10 @@ import {AuthComponent} from "./pages/auth/auth.component";
 
 const appRoutes: Routes = [
   {path: 'login', component: AuthComponent},
-  {path: '', loadChildren: () => import('./pages/admin.module').then(m => m.AdminModule)},
+  {
+    path: '',
+    loadChildren: () => import('./pages/admin.module').then(m => m.AdminModule)
+  }
 ]
 
 @NgModule({

@@ -1,20 +1,24 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from "@angular/core";
 import {DropdownDirective} from "./directive/dropdown.directive";
-import {MatDialogModule} from "@angular/material/dialog";
-import {MatButtonModule} from "@angular/material/button";
 import {LoadingSpinnerComponent} from "./components/loading-spinner/loading-spinner.component";
+import {DropdownSidebarDirective} from "./directive/dropdown-sidebar.directive";
+import {DegIconDirective} from "./directive/deg-icon.directive";
 
 @NgModule({
   declarations: [
     DropdownDirective,
-    LoadingSpinnerComponent
+    DropdownSidebarDirective,
+    LoadingSpinnerComponent,
+    DegIconDirective
   ],
-  imports: [CommonModule, MatDialogModule, MatButtonModule],
+  imports: [CommonModule],
   exports: [
     CommonModule,
     DropdownDirective,
+    DropdownSidebarDirective,
     LoadingSpinnerComponent,
+    DegIconDirective
   ],
 })
 export class SharedModule {

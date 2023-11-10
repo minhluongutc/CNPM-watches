@@ -24,6 +24,10 @@
   color: red;
 }
 
+.dropdownSideBar {
+  display: none;
+}
+
 .dropdown, .dropup {
   position: relative
 }

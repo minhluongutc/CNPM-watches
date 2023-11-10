@@ -8,6 +8,8 @@ import {BillOfSaleComponent} from "./bill-of-sale/bill-of-sale.component";
 import {ImportInvoiceComponent} from "./import-invoice/import-invoice.component";
 
 const routes: Routes = [
+
+
   {
     path: '',
     component: HomeComponent,
@@ -17,7 +19,11 @@ const routes: Routes = [
       {path: 'dashboard', component: DashboardComponent},
       {path: 'watches', component: WatchesComponent},
       {path: 'bill-of-sale', component: BillOfSaleComponent},
-      {path: 'import-invoice', component: ImportInvoiceComponent}
+      {path: 'import-invoice', component: ImportInvoiceComponent},
+      {
+        path: 'statistics',
+        loadChildren: () => import('./statistics/statistics.module').then(m => m.StatisticsModule)
+      }
     ],
   }
 
