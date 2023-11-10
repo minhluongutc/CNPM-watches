@@ -38,7 +38,7 @@
 
 .bag-list-item {
   overflow: auto;
-  height: calc(100vh - 256px);
+  height: calc(100vh - 345px);
 }
 
 .bag-item {

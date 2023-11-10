@@ -1,7 +1,7 @@
 <div class="col l-12" style="margin:32px 0;">
   <div class="flex head-content">
     <div>
-      <span>{{ numberOfWatches }} Models</span>
+      <span>{{ dataResponse.total }} Models</span>
     </div>
     <div class="flex" style="gap: 18px">
       <button class="grid__button flex" (click)="onGrid()">
@@ -89,12 +89,44 @@
     </div>
   </div>
 </div>
+<div *ngIf="isLoading" style="display: block;text-align: center;padding-top: 24px;">
+  <app-loading-spinner></app-loading-spinner>
+</div>
 <!-- with api -->
 <div class="row">
   <div class="col" [class.l-4]="!gridMode" [class.l-3]="gridMode" *ngFor="let watchEL of watches">
     <app-watch-item [watch]="watchEL"></app-watch-item>
   </div>
 </div>
+<ul class="pagination">
+  <ng-container>
+    <li class="pagination-item">
+      <button class="pagination-button" (click)="changePage('1')" [disabled]="dataResponse.current_page==1">&laquo;
+      </button>
+    </li>
+    <li class="pagination-item">
+      <button class="pagination-button" (click)="changePage((dataResponse.current_page-1).toString())"
+              [disabled]="dataResponse.current_page==1">&#8249;
+      </button>
+    </li>
+    <li class="pagination-item" *ngFor="let page of dataResponse.links; let i = index">
+      <button class="pagination-button" (click)="changePage(page.label)"
+              [class.activePage]="page.active" [disabled]="!page.url"
+              style="padding: 5px 9px !important;">{{page.label}}</button>
+    </li>
+    <li class="pagination-item">
+      <button class="pagination-button" (click)="changePage((dataResponse.current_page+1).toString())"
+              [disabled]="dataResponse.current_page>=dataResponse.last_page">&#8250;
+      </button>
+    </li>
+    <li class="pagination-item">
+      <button class="pagination-button" (click)="changePage(dataResponse.last_page.toString())"
+              [disabled]="dataResponse.current_page>=dataResponse.last_page">&raquo;
+      </button>
+    </li>
+  </ng-container>
+</ul>
+<p-toast></p-toast>
 <!-- with api -->
 
 <!--<div class="row" *ngIf="!gridMode">-->

@@ -1,14 +1,15 @@
 <div class="row border-item">
   <div class="col l-12">
-    <a [routerLink]="[watch.id]" class="item-img-link">
+    <a [routerLink]="[watch.maSanPham]" class="item-img-link">
       <img
         class="item-img"
-        src="{{ watch.img }}"
+        src="{{image}}"
         alt="">
     </a>
   </div>
+  <!--   not wishlist-->
   <button class="product-tile__wishlist">
-    <svg *ngIf="!watch.isWishList" width="18px" height="18px" viewBox="0 -0.5 32 32" version="1.1"
+    <svg *ngIf="true" width="18px" height="18px" viewBox="0 -0.5 32 32" version="1.1"
          xmlns="http://www.w3.org/2000/svg"
          xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
          fill="#000000">
@@ -26,7 +27,8 @@
         </g>
       </g>
     </svg>
-    <svg *ngIf="watch.isWishList" width="18px" height="18px" viewBox="0 -1 32 32" version="1.1"
+    <!--     wishList-->
+    <svg *ngIf="false" width="18px" height="18px" viewBox="0 -1 32 32" version="1.1"
          xmlns="http://www.w3.org/2000/svg"
          xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
          fill="#000000">
@@ -49,17 +51,20 @@
   <div class="col l-12 text-align--center">
     <div class="product-line-item__header">
       <div class="product-name text-align--center width100">
-        <a [routerLink]="[watch.id]" class="product-name-link ">{{ watch.name }}</a>
+        <a [routerLink]="[watch.maSanPham]" class="product-name-link ">{{ watch.tenSanPham }}</a>
       </div>
     </div>
     <div class="product-desc">
-      <p [routerLink]="[watch.id]" class="description" style="cursor: pointer">{{ watch.description }}</p>
+      <p [routerLink]="[watch.maSanPham]" class="description" style="cursor: pointer">{{ watch.moTaSP }}</p>
     </div>
     <div class="product-price">
-      <div class="price-sales">{{ watch.price | currency }}</div>
+      <div class="price-sales">{{ watch.giaSanPham | currency: 'VND':'':'1.0-0' }}vnđ</div>
     </div>
   </div>
   <div class="col l-12" style="margin-top: 16px; min-height: 38px">
-    <button class="button button--primary width100 hide-button">ADD TO BAG</button>
+    <button class="button button--primary width100 hide-button" (click)="onAddToCart(watch.maSanPham)">THÊM VÀO GIỎ
+    </button>
   </div>
 </div>
+
+<p-toast></p-toast>

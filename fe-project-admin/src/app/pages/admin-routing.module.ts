@@ -4,6 +4,8 @@ import {HomeComponent} from "./home/home.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {WatchesComponent} from "./watches/watches.component";
 import {AuthGuardService} from "../core/services/auth-guard.service";
+import {BillOfSaleComponent} from "./bill-of-sale/bill-of-sale.component";
+import {ImportInvoiceComponent} from "./import-invoice/import-invoice.component";
 
 const routes: Routes = [
   {
@@ -13,7 +15,9 @@ const routes: Routes = [
     children: [
       {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
       {path: 'dashboard', component: DashboardComponent},
-      {path: 'watches', component: WatchesComponent}
+      {path: 'watches', component: WatchesComponent},
+      {path: 'bill-of-sale', component: BillOfSaleComponent},
+      {path: 'import-invoice', component: ImportInvoiceComponent}
     ],
   }
 

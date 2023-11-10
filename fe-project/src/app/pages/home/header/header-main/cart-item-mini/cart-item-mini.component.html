@@ -1,7 +1,7 @@
 <div>
   <div class="bag-modal">
     <div>
-      <h2 class="title">{{ 'Giỏ hàng (' + numberOfItem + ')' | uppercase }}</h2>
+      <h2 class="title">{{ 'Giỏ hàng (' + watchesInCart.length + ')' | uppercase }}</h2>
       <svg (click)="onCloseCart(false)" class="icon-cancel" viewBox="0 0 512 512" version="1.1" xml:space="preserve"
            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g>
         <g
@@ -23,21 +23,21 @@
         <div class="bag-item" *ngFor="let watch of watchesInCart;">
           <div class="row">
             <div class="col l-6">
-              <a routerLink="/watches/{{watch.id}}" class="item-img-link" (click)="onCloseCart(false)">
+              <a routerLink="/watches/{{watch.maSanPham}}" class="item-img-link" (click)="onCloseCart(false)">
                 <img
                   class="item-img"
-                  src="{{watch.img}}"
+                  src="{{watchService.getImage(watch.maSanPham)}}"
                   alt="">
               </a>
             </div>
             <div class="col l-6 text-align--left">
               <div class="product-line-item__header">
                 <div class="product-name">
-                  <a routerLink="/watches/{{watch.id}}" class="product-name-link"
-                     (click)="onCloseCart(false)">{{ watch.name | uppercase}}</a>
+                  <a routerLink="/watches/{{watch.maSanPham}}" class="product-name-link"
+                     (click)="onCloseCart(false)">{{ watch.tenSanPham | uppercase}}</a>
                 </div>
                 <div class="product-close-icon">
-                  <button class="close-icon">
+                  <button class="close-icon" (click)="onRemoveToCart(watch.maSanPham)">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                       <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -51,10 +51,10 @@
                 </div>
               </div>
               <div class="product-desc">
-                <p class="description">{{ watch.description }}</p>
+                <p class="description">{{ watch.moTaSP }}</p>
               </div>
               <div class="product-price">
-                <div class="price-sales">{{ watch.price | currency }}</div>
+                <div class="price-sales">{{ watch.giaSanPham | currency: 'VND':'':'1.0-0' }}vnđ</div>
               </div>
             </div>
           </div>
@@ -70,17 +70,24 @@
             </p>
           </div>
           <div class="col l-6">
-            <p class="text-align--right subtotal">
-              {{ total | currency }}
+            <p class="text-align--right subtotal" *ngIf="watchesInCart.length>0">
+              {{ dataResponse[0].tongTienGH | currency: 'VND':'':'1.0-0' }}
+              vnđ
+            </p>
+            <p class="text-align--right subtotal" *ngIf="watchesInCart.length==0">
+              0 vnđ
             </p>
           </div>
         </div>
-        <p class="footer-description text-align--left" style="font-size: 17px">Shipping and taxes calculated at
-          checkout.</p>
+        <p class="footer-description text-align--left" style="font-size: 17px">Vận chuyển và thuế được tính khi thanh
+          toán.</p>
         <div class="overlay__footer-actions">
           <a routerLink="/cart"
              class="button button--primary width100"
-             (click)="onCloseCart(false)">{{ 'View my shopping bag' | uppercase }}</a>
+             (click)="onCloseCart(false)">XEM GIỎ HÀNG</a>
+          <!--          <a routerLink="/login" *ngIf="!isAuthenticated"-->
+          <!--             class="button button&#45;&#45;primary width100"-->
+          <!--             (click)="onCloseCart(false)">{{ 'View my shopping bag' | uppercase }}</a>-->
         </div>
       </div>
     </div>

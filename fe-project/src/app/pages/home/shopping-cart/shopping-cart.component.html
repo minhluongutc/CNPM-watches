@@ -5,7 +5,7 @@
   <div class="max-width--xmedium">
     <div class="cart__header">
       <h1 class="cart__title">{{ 'Shopping bag' | uppercase }}</h1>
-      <span class="cart__header-count">{{'(' + numberOfItem + ' Items)'}}</span>
+      <span class="cart__header-count">{{'(' + watchesInCart.length + ' Items)'}}</span>
     </div>
     <div class="row">
       <div class="col l-8">
@@ -13,24 +13,24 @@
           <div class="product-line-item__main">
             <div class="product-line-item__details row">
               <div class="col l-4">
-                <a routerLink="/watches/+{{watch.id}}" class="item-img-link">
+                <a routerLink="/watches/+{{watch.maSanPham}}" class="item-img-link">
                   <img
                     class="item-img"
-                    src="{{watch.img}}"
+                    src="{{watchService.getImage(watch.maSanPham)}}"
                     alt="">
                 </a>
               </div>
               <div class="col l-8" style="position: relative">
                 <div class="product-line-item__header">
                   <div class="product-name">
-                    <a href="" class="product-name-link">{{ watch.name | uppercase}}</a>
+                    <a href="" class="product-name-link">{{ watch.tenSanPham | uppercase}}</a>
                   </div>
                   <div class="flex">
                     <div class="product-price">
-                      <div class="price-primary">{{watch.price | currency}}</div>
+                      <div class="price-primary">{{watch.giaSanPham | currency: 'VND':'':'1.0-0' }}vnđ</div>
                     </div>
                     <div class="product-close-icon">
-                      <button class="close-icon" style="top: -8px">
+                      <button class="close-icon" style="top: -8px" (click)="onRemoveToCart(watch.maSanPham)">
                         <svg style="background-color: #fff; border-radius: 50%;" viewBox="0 0 24 24" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                           <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -46,11 +46,11 @@
                   </div>
                 </div>
                 <div class="product-desc">
-                  <p class="description">{{watch.description}}</p>
+                  <p class="description">{{watch.moTaSP}}</p>
                 </div>
                 <div class="product-line-item__actions row">
                   <div class="product-line-item__action col l-4">
-                    <button class="link--primary ">Add Another Item</button>
+                    <button class="link--primary" routerLink="/watches">Add Another Item</button>
                   </div>
                   <div class="product-line-item__action col l-4">
                     <button class="link--primary">Move to Wishlist</button>
@@ -71,7 +71,7 @@
               <p class="price-primary">SUBTOTAL</p>
             </dt>
             <dd class="col l-6">
-              <p class="price-primary text-align--right">{{total | currency}}</p>
+              <p class="price-primary text-align--right">{{dataResponse[0].tongTienGH | currency}}</p>
             </dd>
           </div>
           <div class="row">
@@ -100,3 +100,5 @@
     </div>
   </div>
 </div>
+
+<p-toast></p-toast>

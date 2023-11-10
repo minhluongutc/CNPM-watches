@@ -12,33 +12,39 @@
             <span class="breadcrumbs__anchor">/</span>
           </li>
           <li class="breadcrumbs__item">
-            <a routerLink="/watches" class="breadcrumbs__link link--secondary font-family--sans">{{ watch.name }}</a>
+            <a routerLink="/watches"
+               class="breadcrumbs__link link--secondary font-family--sans">{{ watch.tenSanPham }}</a>
           </li>
         </ul>
       </div>
     </div>
     <div class="row sm-gutter">
       <div class="col" [class.l-12]="i===0" [class.l-6]="i!==0"
-           *ngFor="let imgDetail of watch.imgDetails; let i = index" style="margin-bottom: 10px">
+           *ngFor="let image of imageDetails.imageNames; let i = index" style="margin-bottom: 10px">
         <img class="width100 height100"
-             [ngSrc]="watch.imgDetails[i]"
+             [ngSrc]="watchService.getImageDetail(image)"
              alt="" width="100" height="100">
       </div>
+
+
+    </div>
+    <div *ngIf="isLoading" style="display: block;text-align: center;padding-top: 24px;">
+      <app-loading-spinner></app-loading-spinner>
     </div>
   </div>
   <div class="col l-5">
     <div class="right-bar">
       <div class="pdp-main__details">
-        <h1 class="pdp-main__title heading-type font-family--sans">{{ watch.name }}</h1>
+        <h1 class="pdp-main__title heading-type font-family--sans">{{ watch.tenSanPham }}</h1>
         <div class="pdp-main__description">
-          <span class="description">{{ watch.description }}</span>
+          <span class="description">{{ watch.moTaSP }}</span>
         </div>
       </div>
       <div class="pdp-main__price">
-        <div class="pdp-main__sales">{{ this.watch.price | currency }}</div>
+        <div class="pdp-main__sales">{{ this.watch.giaSanPham | currency: 'VND':'':'1.0-0' }}vnđ</div>
         <div class="row width100 flex">
           <div class="col l-10 add--product">
-            <button class="button button--primary width100">ADD TO BAG</button>
+            <button class="button button--primary width100" (click)="onAddToCart(watch.maSanPham)">ADD TO BAG</button>
           </div>
           <div class="col l-2 wish--list-icon">
             <svg class="svg-icon"
@@ -58,6 +64,6 @@
       </div>
     </div>
 
-
   </div>
 </div>
+<p-toast></p-toast>

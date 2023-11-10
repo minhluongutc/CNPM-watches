@@ -11,6 +11,8 @@ import {MatTableModule} from "@angular/material/table";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {ToastModule} from "primeng/toast";
 import {AuthComponent} from './auth/auth.component';
+import { BillOfSaleComponent } from './bill-of-sale/bill-of-sale.component';
+import { ImportInvoiceComponent } from './import-invoice/import-invoice.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import {AuthComponent} from './auth/auth.component';
     HeaderComponent,
     HomeComponent,
     SidebarComponent,
-    AuthComponent
+    AuthComponent,
+    BillOfSaleComponent,
+    ImportInvoiceComponent
   ],
   imports: [
     AdminRoutingModule,

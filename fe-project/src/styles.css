@@ -871,3 +871,35 @@ button {
 .dropdown-toggle:focus {
   outline: 0
 }
+
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.pagination-list {
+  display: flex;
+}
+
+.pagination-item {
+  list-style: none;
+}
+
+.pagination-button {
+  background-color: #ffffff;
+  padding: 5px 9px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.pagination-button:hover {
+  /*background-color: rgba(234, 232, 232, 0.57);*/
+  opacity: 0.7;
+}
+
+.activePage {
+  background-color: #0F4AA4;
+}

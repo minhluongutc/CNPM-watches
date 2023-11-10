@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {BehaviorSubject, catchError, Observable, tap, throwError} from "rxjs";
-import {User} from "../models/user.model";
+import {User} from "../../models/user.model";
 import {Router} from "@angular/router";
-import {AuthResponseData} from "../models/AuthResponseData.model";
+import {AuthResponseData} from "../../models/AuthResponseData.model";
 
 @Injectable()
 export class AuthService {
@@ -108,7 +108,9 @@ export class AuthService {
 
     if (loadedUser.token) {
       this.user.next(loadedUser);
-      const expirationDuration = new Date(userData._tokenExpirationData).getTime() - new Date().getTime();
+      const expirationDuration =
+        new Date(userData._tokenExpirationData).getTime() -
+        new Date().getTime();
       this.autoLogout(expirationDuration);
     }
   }

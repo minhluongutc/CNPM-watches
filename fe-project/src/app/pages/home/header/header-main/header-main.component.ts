@@ -1,7 +1,7 @@
 import {Component, OnInit,} from "@angular/core";
-import {ShoppingCartService} from "../../../../core/services/shopping-cart.service";
+import {CartService} from "../../../../core/services/cart.service";
 import {AuthService} from "../../../../core/services/auth.service";
-import {User} from "../../../../core/models/user.model";
+import {User} from "../../../../models/user.model";
 import {Subscription} from "rxjs";
 import {Router} from "@angular/router";
 
@@ -18,7 +18,7 @@ export class HeaderMainComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private shoppingCartSV: ShoppingCartService,
+    private shoppingCartSV: CartService,
     private router: Router
   ) {
     this.userSub = Subscription.EMPTY;

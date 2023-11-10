@@ -94,4 +94,5 @@
   </div>
 </div>
 
-<app-cart-item-mini *ngIf="showItemCart" (onClose)="onCloseCartItem($event)"></app-cart-item-mini>
+<app-cart-item-mini [isAuthenticated]="isAuthenticated" *ngIf="showItemCart"
+                    (onClose)="onCloseCartItem($event)"></app-cart-item-mini>

@@ -1,22 +1,26 @@
 import {NgModule} from "@angular/core";
-import {ShoppingCartService} from "./services/shopping-cart.service";
+import {CartService} from "./services/cart.service";
 import {WatchService} from "./services/watch.service";
 import {CommonModule, CurrencyPipe, NgOptimizedImage, UpperCasePipe} from "@angular/common";
 import {SharedModule} from "../shared/shared.module";
 import {AuthService} from "./services/auth.service";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MessageService} from "primeng/api";
 import {AuthGuardService} from "./services/auth-guard.service";
 import {AuthInterceptorService} from "./services/auth-interceptor.service";
 
 @NgModule({
   providers: [
-    ShoppingCartService,
+    CartService,
     WatchService,
     AuthService,
     MessageService,
     AuthGuardService,
-    AuthInterceptorService
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
   ],
   imports: [
     CommonModule,

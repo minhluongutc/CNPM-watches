@@ -4,9 +4,11 @@ import {WatchesListComponent} from "./watches-list/watches-list.component";
 import {WatchesFilterListComponent} from "./watches-filter-list/watches-filter-list.component";
 import {WatchItemComponent} from "./watches-list/watch-item/watch-item.component";
 import {WatchDetailComponent} from "./watch-detail/watch-detail.component";
-import {CommonModule, CurrencyPipe, NgOptimizedImage} from "@angular/common";
+import {CommonModule, CurrencyPipe, NgForOf, NgOptimizedImage} from "@angular/common";
 import {WatchesRoutingModule} from "./watches-routing.module";
 import {RouterLink, RouterModule} from "@angular/router";
+import {ToastModule} from "primeng/toast";
+import {SharedModule} from "../../../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -22,7 +24,10 @@ import {RouterLink, RouterModule} from "@angular/router";
     NgOptimizedImage,
     CurrencyPipe,
     RouterModule,
-    CommonModule
+    CommonModule,
+    ToastModule,
+    SharedModule,
+    NgForOf
   ]
 })
 export class WatchesModule {

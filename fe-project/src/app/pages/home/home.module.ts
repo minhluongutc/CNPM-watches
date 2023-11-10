@@ -48,6 +48,9 @@ import {ToastModule} from "primeng/toast";
     NgOptimizedImage,
     ReactiveFormsModule,
     ToastModule,
+  ],
+  providers: [
+    CartItemMiniComponent
   ]
 })
 export class HomeModule {
