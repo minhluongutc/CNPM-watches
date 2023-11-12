@@ -1,0 +1,87 @@
+<div class="container">
+  <div id="user-info">
+    <h2>{{dataResponse.tenKhachHang}}</h2>
+    <p>Email: {{dataResponse.email}}</p>
+    <p>Điện thoại: {{dataResponse.SDT}}</p>
+    <p>Địa chỉ: {{dataResponse.diaChi}}</p>
+    <!--    <p>Ngày sinh: 01/01/1990</p>-->
+    <p>Giới tính: {{dataResponse.gioiTinh}}</p>
+    <!--    <p>Sở thích: Đọc sách, nghe nhạc</p>-->
+  </div>
+
+  <div id="invoice-list">
+    <h2>Lịch sử mua hàng</h2>
+    <!-- Hiển thị danh sách hóa đơn ở đây -->
+    <ul>
+      <li>ngày 1</li>
+      <li>ngày 1</li>
+      <li>ngày 1</li>
+      <li>ngày 1</li>
+    </ul>
+  </div>
+
+  <!--  <button id="change-password-btn">Đổi Mật Khẩu</button>-->
+  <button id="edit-info-btn" (click)="showUpdatePopupFn()">Sửa Thông Tin Cá Nhân</button>
+</div>
+
+<!-- Popup -->
+<div *ngIf="showUpdatePopup" style="transition: all linear 0.5s">
+  <div class="overlay" (click)="hideUpdateFormFn()"></div>
+  <form class="popup-add" [formGroup]="editForm">
+    <h1 class="popup-delete--title">Sửa thông tin</h1>
+    <div class="row no-gutters">
+      <div class="col l-12">
+        <div class="form-group">
+          <p class="form-title">Địa chỉ</p>
+          <input formControlName="address" class="form-input" type="text" [value]="editForm.controls['address'].value"
+                 [class.form-input__error]="address?.invalid && address?.touched">
+          <span *ngIf="address?.invalid && address?.touched" class="help-block">
+            <span *ngIf="address?.errors?.['required']" class="red">
+              Vui lòng nhập địa chỉ.
+            </span>
+          </span>
+        </div>
+        <div class="form-group">
+          <p class="form-title">Điện thoại</p>
+          <input formControlName="phoneNumber" class="form-input" [value]="editForm.controls['phoneNumber'].value"
+                 [class.form-input__error]="phoneNumber?.invalid && phoneNumber?.touched">
+          <span *ngIf="phoneNumber?.invalid && phoneNumber?.touched" class="help-block">
+            <span *ngIf="phoneNumber?.errors?.['required']" class="red">
+              Vui lòng nhập số điện thoại.
+            </span>
+            <span *ngIf="phoneNumber?.errors?.['pattern']" class="red">
+              Vui lòng nhập đúng định dạng số điện thoại.
+            </span>
+          </span>
+        </div>
+        <div class="form-group">
+          <p class="form-title">Giới tính</p>
+          <select formControlName="gender" class="form-input" [(ngModel)]="gioiTinhSelected"
+                  [class.form-input__error]="gender?.invalid && gender?.touched">
+            <option value="Nam">Nam</option>
+            <option value="Nu">Nữ</option>
+          </select>
+          <span *ngIf="gender?.invalid && gender?.touched" class="help-block">
+            <span *ngIf="gender?.errors?.['required']" class="red">
+              Vui lòng nhập giới tính.
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="isLoadingForm" style="    position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 10;
+        transform: translate(-50%, -50%);">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <div class="popup-delete--action">
+      <button class="button button--secondary" (click)="hideUpdateFormFn()">Hủy</button>
+      <button class="button button--primary" (click)="onEdit(editForm)" [disabled]="editForm.invalid">Sửa</button>
+    </div>
+  </form>
+
+</div>
+
+

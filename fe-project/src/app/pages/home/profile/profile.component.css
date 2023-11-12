@@ -1,0 +1,85 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-title {
+  padding-left: 10%;
+  padding-bottom: 4px;
+  font-size: 18px;
+}
+
+.form-input {
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.popup-add {
+  background-color: #fff;
+  height: 500px;
+  border-radius: 8px;
+  z-index: 6;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  width: 700px;
+  left: 50%;
+  border: 1px solid;
+}
+
+
+.popup-delete--title {
+  font-size: 22px;
+  margin: 15px;
+}
+
+.popup-delete--description {
+  padding: 18px 15px;
+}
+
+.popup-delete--action {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  display: flex;
+  gap: 12px;
+}
+
+.red {
+  margin-left: 10%;
+}
+
+.form-input__error {
+  border: 1px solid red;
+}
