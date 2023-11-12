@@ -52,6 +52,9 @@
           <span *ngIf="phoneNumber?.errors?.['required']" class="red">
             Vui lòng nhập số điện thoại.
           </span>
+          <span *ngIf="phoneNumber?.errors?.['pattern']" class="red">
+            Vui lòng nhập đúng định dạng số điện thoại.
+          </span>
       <!--          <span *ngIf="phoneNumber?.errors?.['pattern']" class="red">-->
       <!--            Vui lòng nhập ký tự khác số.-->
       <!--          </span>-->

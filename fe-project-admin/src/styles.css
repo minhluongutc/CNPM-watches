@@ -921,14 +921,6 @@ th.mat-sort-header-sorted {
   gap: 12px;
 }
 
-/*p-toast {*/
-/*  padding: 10px;*/
-/*}*/
-
-/*p-toastitem {*/
-/*  padding: 10px 8px;*/
-/*}*/
-
-/*.p-toast-detail {*/
-/*  padding-top: 10px*/
-/*}*/
+.statistics--heading {
+  padding: 30px 0;
+}

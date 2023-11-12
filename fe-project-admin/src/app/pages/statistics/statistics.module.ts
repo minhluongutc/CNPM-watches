@@ -9,6 +9,11 @@ import {
 } from "./statistics-products-by-quantity-sold-last-month/statistics-products-by-quantity-sold-last-month.component";
 import {SharedModule} from "../../shared/shared.module";
 import {StatisticsRoutingModule} from "./statistics-routing.module";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
+import {MatInputModule} from "@angular/material/input";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -22,7 +27,12 @@ import {StatisticsRoutingModule} from "./statistics-routing.module";
     SharedModule,
     FormsModule,
     ToastModule,
-    StatisticsRoutingModule
+    StatisticsRoutingModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   exports: [
     StatisticsByMonthComponent,

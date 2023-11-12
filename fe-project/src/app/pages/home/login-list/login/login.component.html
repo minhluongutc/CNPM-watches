@@ -1,17 +1,17 @@
 <form [formGroup]="loginForm">
-  <p class="form-intro">If you are already registered with Cartier, login here:</p>
-  <p class="form-required">Required field*</p>
+  <p class="form-intro">Nếu bạn đã đăng ký với Cartie, đăng nhập tại đây.</p>
+  <p class="form-required">Trường bắt buộc*</p>
   <div class="form-group">
     <input type="text" class="form-input" required formControlName="email"
            [class.form-input__error]="email?.invalid && email?.touched">
     <span class="bar"></span>
-    <label class="form-label">Email address*</label>
+    <label class="form-label">Địa chỉ email*</label>
     <span *ngIf="email?.invalid && email?.touched" class="help-block">
       <span *ngIf="email?.errors?.['required']" class="red">
-        Error - This field is required
+        Vui lòng nhập email.
       </span>
       <span *ngIf="email?.errors?.['email']" class="red">
-        Error - Please enter a valid Email address
+        Vui lòng nhập đùng định dạng email.
       </span>
     </span>
   </div>
@@ -19,20 +19,20 @@
     <input type="password" class="form-input" required formControlName="password"
            [class.form-input__error]="password?.invalid && password?.touched">
     <span class="bar"></span>
-    <label class="form-label">Password*</label>
+    <label class="form-label">Mật khẩu*</label>
     <span *ngIf="password?.invalid && password?.touched" class="help-block">
       <span *ngIf="password?.errors?.['required']" class="red">
-        Error - This field is required
+        Vui lòng nhập mật khẩu
       <br>
       </span>
       <span *ngIf="!password?.errors?.['minLength']" class="red">
-        Error - This field is greater than 6
+        Mật khẩu phải nhiều hơn 6 ký tự.
       </span>
     </span>
   </div>
   <div class="form-group">
     <div class="form-forgot">
-      <a href="" class="forgot-link">Forgot your password?</a>
+      <a href="" class="forgot-link">Quên mật khẩu?</a>
     </div>
     <div class="form-policy">
       <p class="policy-intro">Read the
@@ -43,7 +43,7 @@
   </div>
   <div class="form-actions text-align--center">
     <button type="submit" class="button button--primary" (click)="onSubmit(loginForm)" [disabled]="loginForm.invalid">
-      Login
+      Đăng nhập
     </button>
   </div>
 

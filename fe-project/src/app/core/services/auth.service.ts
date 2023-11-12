@@ -17,6 +17,19 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {
   }
 
+  profile() {
+    return this.http.get(`${this.apiUrl}/profile`);
+  }
+
+  updateProfile(id: string | number, gioiTinh: string, diaChi: string, SDT: string) {
+    const formData = new FormData();
+    formData.append('gioiTinh', gioiTinh);
+    formData.append('diaChi', diaChi);
+    formData.append('SDT', SDT);
+
+    return this.http.post(`${this.apiUrl}/update/${id}`, formData);
+  }
+
   register(fullName: string, gender: string, address: string, phoneNumber: string, email: string, password: string): Observable<AuthResponseData> {
     const url = `${this.apiUrl}/register`;
     return this.http
@@ -153,7 +166,16 @@ export class AuthService {
   private handleError(errorRes: HttpErrorResponse) {
     console.log(errorRes)
     let errorMessage = '';
-    // if (!errorRess.error)
+    switch (errorRes.error.error) {
+      case 'Unauthorized':
+        errorMessage = 'Tài khoản hoặc mật khẩu không chính xác.';
+        break;
+      case 'duplicateEmail':
+        errorMessage = 'Tài khoản email đã tồn tại.';
+        break;
+      default :
+        errorMessage = 'Lỗi hệ thống';
+    }
     return throwError(errorMessage);
   }
 }

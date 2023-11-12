@@ -1,1 +1,17 @@
-<p>statistics-by-quater works!</p>
+<h1 class="text-align--center statistics--heading">Thống kê doanh thu hàng quý</h1>
+
+<div class="chart-container">
+  <canvas id="MyChart">{{ chart }}</canvas>
+</div>
+<div style="    display: flex;
+    align-items: center;
+    gap: 10px;">
+  <p>Từ năm</p>
+  <select [(ngModel)]="fromYearSelected" class="page-size-number" (change)="onChangeFromYearSelected(fromYearSelected)">
+    <option *ngFor="let year of yearsFromArray" value="{{year}}">{{year}}</option>
+  </select>
+  <p>đến năm</p>
+  <select [(ngModel)]="toYearSelected" class="page-size-number" (change)="onChangeToYearSelected(toYearSelected)">
+    <option *ngFor="let year of yearsToArray" value="{{year}}">{{year}}</option>
+  </select>
+</div>

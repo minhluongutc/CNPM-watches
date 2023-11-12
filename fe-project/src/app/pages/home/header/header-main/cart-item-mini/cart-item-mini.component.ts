@@ -16,7 +16,7 @@ export class CartItemMiniComponent implements OnInit {
   @Output() onClose = new EventEmitter<boolean>();
   @Input() isAuthenticated = false;
 
-  constructor(private cartSV: CartService, private messageService: MessageService, public watchService: WatchService) {
+  constructor(public cartSV: CartService, private messageService: MessageService, public watchService: WatchService) {
   }
 
   ngOnInit(): void {
@@ -43,6 +43,7 @@ export class CartItemMiniComponent implements OnInit {
       .removeToCart(id)
       .subscribe((res) => {
         console.log(res)
+        this.showSuccess('Xóa sản phẩm khỏi giỏ hàng thành công.');
       })
     // this.getCartDetail();
   }

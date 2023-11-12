@@ -1,1 +1,59 @@
-<p>dashboard works!</p>
+<h1 style="    font-size: 22px;
+    padding: 16px 26px;">Bảng điều kiển</h1>
+
+<div class="grid">
+  <div class="row no-gutters" style="cursor: pointer" routerLink="/statistics/statisticsByQuarter">
+    <div class="col l-4">
+      <div class="chart-container">
+        <canvas id="quarterlyChart">{{ quarterlyChart }}</canvas>
+      </div>
+    </div>
+    <div class="col l-4" style="cursor: pointer" routerLink="/statistics/statisticsByMonth">
+      <div class="chart-container">
+        <canvas id="monthlyChart">{{ monthlyChart }}</canvas>
+      </div>
+    </div>
+    <div class="col l-4" style="cursor: pointer" routerLink="/statistics/statisticsByBrand">
+      <div class="chart-container">
+        <canvas id="brandChart">{{ brandChart }}</canvas>
+      </div>
+    </div>
+  </div>
+  <div class="col l-8">
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No.</th>
+          <td mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="maSanPham">
+          <th mat-header-cell *matHeaderCellDef> Mã sản phẩm</th>
+          <td mat-cell *matCellDef="let element"> {{element.maSanPham}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="productName">
+          <th mat-header-cell *matHeaderCellDef> Tên sản phẩm</th>
+          <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="quantitySold">
+          <th mat-header-cell *matHeaderCellDef> Số lượng bán</th>
+          <td mat-cell *matCellDef="let element"> {{element.quantitySold}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="totalRevenue">
+          <th mat-header-cell *matHeaderCellDef> Doanh thu sản phẩm</th>
+          <td mat-cell *matCellDef="let element"> {{element.totalRevenue | currency: 'VND':'':'1.0-0'}} vnđ</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [length]="resultsLength" [pageSize]="30"
+                     aria-label="Select page of GitHub search results"></mat-paginator>
+
+    </div>
+  </div>
+</div>

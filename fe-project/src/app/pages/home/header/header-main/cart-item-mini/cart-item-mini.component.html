@@ -20,6 +20,9 @@
       <!--        <p class="bag-content-empty">Không có sản phẩm nào trong giỏ hàng</p>-->
       <!--      </div>-->
       <div class="bag-list-item">
+        <p class="text-align--center p-text-secondary" *ngIf="!(watchesInCart.length>0)">
+          Không có sản phẩm nào trong giỏ hàng.
+        </p>
         <div class="bag-item" *ngFor="let watch of watchesInCart;">
           <div class="row">
             <div class="col l-6">
@@ -70,12 +73,12 @@
             </p>
           </div>
           <div class="col l-6">
-            <p class="text-align--right subtotal" *ngIf="watchesInCart.length>0">
-              {{ dataResponse[0].tongTienGH | currency: 'VND':'':'1.0-0' }}
-              vnđ
-            </p>
-            <p class="text-align--right subtotal" *ngIf="watchesInCart.length==0">
-              0 vnđ
+            <!--            <p class="text-align&#45;&#45;right subtotal">-->
+            <!--              {{ dataResponse[0].tongTienGH | currency: 'VND':'':'1.0-0' }}-->
+            <!--              vnđ-->
+            <!--            </p>-->
+            <p class="text-align--right subtotal">
+              {{ cartSV.getTotalPrice() | currency: 'VND':'':'1.0-0' }} vnđ
             </p>
           </div>
         </div>

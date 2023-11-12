@@ -75,6 +75,9 @@ export class WatchesComponent implements OnInit {
   maChatLieuSelected: any;
   maDayDeoSelected: any;
   maKichThuocSelected: any;
+  preview: any;
+  file: File | null = null;
+  files: any;
 
   constructor(
     private watchService: WatchService,
@@ -113,6 +116,7 @@ export class WatchesComponent implements OnInit {
         'price': new FormControl('', [Validators.required]),
         'image': new FormControl('', [Validators.required]),
         'description': new FormControl('', [Validators.required]),
+        'images': new FormControl('', [Validators.required])
       }
     )
 
@@ -129,6 +133,7 @@ export class WatchesComponent implements OnInit {
         'price': new FormControl('', [Validators.required]),
         'image': new FormControl('', [Validators.required]),
         'description': new FormControl('', [Validators.required]),
+        'images': new FormControl('', [Validators.required])
       }
     )
     // this.loadData(1, 1);
@@ -194,8 +199,11 @@ export class WatchesComponent implements OnInit {
     const material = form.value.material;
     const strap = form.value.strap;
     const price = form.value.price;
-    const image = form.value.image;
+    const image = this.file;
+    const imageName = this.file ? this.file.name : null
     const description = form.value.description;
+    const images = this.files;
+    // const imagesName = this.files ? this.files. : null
     console.log(form);
     this.watchService.addWatch(
       name,
@@ -207,10 +215,14 @@ export class WatchesComponent implements OnInit {
       material,
       strap,
       price,
-      image,
-      description
+      <File>image,
+      description,
+      imageName,
+      images,
     )
       .subscribe(res => {
+        console.log(image);
+        console.log(res);
         this.loadData(1, Number(this.pageSizeSelected));
         this.showAddPopup = false
         this.addForm.reset();
@@ -220,6 +232,47 @@ export class WatchesComponent implements OnInit {
   }
 
   onEdit(form: FormGroup) {
+    this.isLoadingForm = true;
+    const name = form.value.name;
+    const CCHD = form.value.CCHD;
+    const type = form.value.type;
+    const brand = form.value.brand;
+    const size = form.value.size;
+    const shape = form.value.shape;
+    const material = form.value.material;
+    const strap = form.value.strap;
+    const price = form.value.price;
+    const image = this.file;
+    const imageName = this.file ? this.file.name : null
+    const description = form.value.description;
+    const images = this.files;
+    // const imagesName = this.files ? this.files. : null
+    console.log(form);
+    this.watchService.updateWatch(
+      this.watchSelected.maSanPham,
+      name,
+      CCHD,
+      type,
+      brand,
+      size,
+      shape,
+      material,
+      strap,
+      price,
+      <File>image,
+      description,
+      imageName,
+      images,
+    )
+      .subscribe(res => {
+        console.log(image);
+        console.log(res);
+        this.loadData(1, Number(this.pageSizeSelected));
+        this.showUpdatePopup = false
+        this.addForm.reset();
+        this.showSuccess('Sửa sản phẩm thành công.');
+        this.isLoadingForm = false;
+      });
   }
 
 
@@ -411,13 +464,6 @@ export class WatchesComponent implements OnInit {
   }
 
   showAddFormFn() {
-    // this.getWatchSizes();
-    // this.getWatchBrands();
-    // this.getWatchCCHDs();
-    // this.getWatchMaterials()
-    // this.getWatchShapes();
-    // this.getWatchStraps();
-    // this.getWatchTypes();
     this.showAddPopup = true;
   }
 
@@ -426,30 +472,15 @@ export class WatchesComponent implements OnInit {
   }
 
   showUpdateFormFn(form: FormGroup, watch: Watch) {
-    // this.getWatchSizes();
-    // this.getWatchBrands();
-    // this.getWatchCCHDs();
-    // this.getWatchMaterials()
-    // this.getWatchShapes();
-    // this.getWatchStraps();
-    // this.getWatchTypes();
-    // const name = form.value.name;
-    // const CCHD = form.value.CCHD;
-    // const type = form.value.type;
-    // const brand = form.value.brand;
-    // const size = form.value.size;
-    // const shape = form.value.shape;
-    // const material = form.value.material;
-    // const strap = form.value.strap;
-    // const price = form.value.price;
-    // const image = form.value.image;
-    // const description = form.value.description;
     this.watchSelected = watch;
+    console.log(this.watchSelected)
     this.editForm.controls['name'].setValue(watch.tenSanPham);
     this.editForm.controls['price'].setValue(watch.giaSanPham);
     this.editForm.controls['image'].setValue(watch.anhSP);
     this.editForm.controls['description'].setValue(watch.moTaSP);
     this.editForm.controls['CCHD'].setValue(watch.tenCCHD);
+    console.log(watch.anhSP)
+    console.log(this.editForm.controls['image']);
     for (let cchd of this.watchCCHDs) {
       if (cchd.tenCCHD == watch.tenCCHD) {
         this.maCCHDSelected = cchd.maCCHD;
@@ -492,13 +523,42 @@ export class WatchesComponent implements OnInit {
         break;
       }
     }
-    console.log(form.value.CCHD == this.watchSelected.tenCCHD);
-    console.log('form: ' + form.value.shape);
-    console.log(watch.tenCCHD);
     this.showUpdatePopup = true;
   }
 
   hideUpdateFormFn() {
     this.showUpdatePopup = false;
   }
+
+  onFileChange(event: Event) {
+    this.file = (event.target as HTMLInputElement).files?.[0] || null;
+    console.log(this.file);
+
+    const reader = new FileReader();
+    reader.readAsDataURL(this.file as File);
+    reader.onload = (e: any) => {
+      this.preview = e.target.result;
+    };
+  }
+
+  onFilesChange(event: Event) {
+    // @ts-ignore
+    const files: FileList = (event.target as HTMLInputElement).files;
+    this.files = [];
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files.item(i) as File;
+      console.log(file);
+      this.files.push({file, preview: this.createImage(file)});
+    }
+  }
+
+  createImage(file: File): any {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (e: any) => {
+      return e.target.result;
+    };
+  }
+
 }

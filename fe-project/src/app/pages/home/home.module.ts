@@ -5,7 +5,7 @@ import {LoginComponent} from "./login-list/login/login.component";
 import {RegisterComponent} from "./login-list/register/register.component";
 import {ShoppingCartComponent} from "./shopping-cart/shopping-cart.component";
 import {RouterModule} from "@angular/router";
-import {CommonModule, NgOptimizedImage, UpperCasePipe} from "@angular/common";
+import {CommonModule, NgForOf, NgIf, NgOptimizedImage, UpperCasePipe} from "@angular/common";
 import {HeaderComponent} from "./header/header.component";
 import {FooterComponent} from "./footer/footer.component";
 import {HeaderMainComponent} from "./header/header-main/header-main.component";
@@ -14,8 +14,10 @@ import {HeaderMainNavComponent} from "./header/header-main-nav/header-main-nav.c
 import {WatchesModule} from "./watches/watches.module";
 import {SharedModule} from "../../shared/shared.module";
 import {CoreModule} from "../../core/core.module";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ToastModule} from "primeng/toast";
+import {BillComponent} from './bill/bill.component';
+import {ProfileComponent} from './profile/profile.component';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import {ToastModule} from "primeng/toast";
     CartItemMiniComponent,
     HeaderMainNavComponent,
     FooterComponent,
+    BillComponent,
+    ProfileComponent,
   ],
   exports: [
     HomeComponent,
@@ -48,6 +52,11 @@ import {ToastModule} from "primeng/toast";
     NgOptimizedImage,
     ReactiveFormsModule,
     ToastModule,
+    FormsModule,
+    NgForOf,
+    NgIf,
+    ReactiveFormsModule,
+    SharedModule,
   ],
   providers: [
     CartItemMiniComponent

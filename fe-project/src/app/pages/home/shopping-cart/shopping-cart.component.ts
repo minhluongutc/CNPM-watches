@@ -3,6 +3,8 @@ import {CartService} from "../../../core/services/cart.service";
 import {Watch} from "../../../models/watch.model";
 import {MessageService} from "primeng/api";
 import {WatchService} from "../../../core/services/watch.service";
+import {CheckoutService} from "../../../core/services/checkout.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -14,8 +16,14 @@ export class ShoppingCartComponent implements OnInit {
   watchInCart: Watch = new Watch("", "", 0, 0, "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "")
   dataResponse: any;
   dataResponseSub: any;
+  urlPayment: any;
 
-  constructor(private cartSV: CartService, private messageService: MessageService, public watchService: WatchService) {
+  constructor(
+    private cartSV: CartService,
+    private messageService: MessageService,
+    public watchService: WatchService,
+    private checkoutSV: CheckoutService,
+    private router: Router) {
   }
 
   ngOnInit(): void {
@@ -70,8 +78,25 @@ export class ShoppingCartComponent implements OnInit {
       .removeToCart(id)
       .subscribe((res) => {
         console.log(res)
+        this.showSuccess('Xóa sản phẩm khỏi giỏ hàng thành công.')
       })
     this.getCartDetail();
+  }
+
+  onCheckout() {
+    this.checkoutSV.getPayment().subscribe(
+      res => {
+        console.log(res)
+        this.urlPayment = res;
+        console.log(this.urlPayment)
+        if (this.urlPayment.data) {
+          // Chuyển hướng đến URL mới
+          window.location.href = this.urlPayment.data;
+        }
+      }, error => {
+        console.log(error)
+      }
+    )
   }
 
   showError(message: string) {

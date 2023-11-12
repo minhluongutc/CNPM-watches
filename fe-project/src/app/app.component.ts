@@ -29,7 +29,10 @@ export class AppComponent implements OnInit {
       .getWatchIdsInCart()
       .subscribe(
         (res) => {
+          console.log(res)
           this.dataResponse = res;
+
+          this.cartSV.setTotalPrice(this.dataResponse[0].tongTienGH)
           console.log(this.dataResponse[0].cart_detail);//chi tiet gio hang
           for (let watch of this.dataResponse[0].cart_detail) {
             this.getWatchesInCart(watch.maSanPham);

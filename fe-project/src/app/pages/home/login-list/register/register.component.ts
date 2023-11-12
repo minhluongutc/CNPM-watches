@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
         'genderRegister': new FormControl('', [Validators.required]),
         'fullName': new FormControl('', [Validators.required, Validators.pattern('^[a-zA-ZÀ-Ỹà-ỹ ]+$')]),
         'address': new FormControl('', [Validators.required]),
-        'phoneNumber': new FormControl('', [Validators.required]),
+        'phoneNumber': new FormControl('', [Validators.required, Validators.pattern('^(0|\\+84)(3[2-9]|5[6|8|9]|7[0|6-9]|8[1-6|8-9]|9\\d)\\d{7}$')]),
         'email': new FormControl('', [Validators.required, Validators.email]),
         'confirmEmail': new FormControl('', [Validators.required, EmailValidator('email')]),
         'password': new FormControl('', [Validators.required, Validators.minLength(6)]),
@@ -96,7 +96,8 @@ export class RegisterComponent implements OnInit {
           this.isLoading = false;
         },
         (error) => {
-          this.showError();
+          console.log(error)
+          this.showError(error);
         })
 
     form.reset();
@@ -107,8 +108,8 @@ export class RegisterComponent implements OnInit {
     this.messageService.add({severity: 'success', summary: 'Thành công', detail: message});
   }
 
-  showError() {
-    this.messageService.add({severity: 'error', summary: 'Thất bại', detail: 'Lỗi hệ thống.'});
+  showError(message: string) {
+    this.messageService.add({severity: 'error', summary: 'Thất bại', detail: message});
   }
 
 

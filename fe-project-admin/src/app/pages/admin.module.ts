@@ -13,6 +13,7 @@ import {ToastModule} from "primeng/toast";
 import {AuthComponent} from './auth/auth.component';
 import {BillOfSaleComponent} from './bill-of-sale/bill-of-sale.component';
 import {ImportInvoiceComponent} from './import-invoice/import-invoice.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import {ImportInvoiceComponent} from './import-invoice/import-invoice.component'
     MatCheckboxModule,
     ToastModule,
     ReactiveFormsModule,
+    MatPaginatorModule,
   ],
   exports: [
     HeaderComponent,

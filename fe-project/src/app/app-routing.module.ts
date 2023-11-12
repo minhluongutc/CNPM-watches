@@ -5,6 +5,8 @@ import {LoginListComponent} from "./pages/home/login-list/login-list.component";
 import {ShoppingCartComponent} from "./pages/home/shopping-cart/shopping-cart.component";
 import {PageNotFoundComponent} from "./shared/components/page-not-found/page-not-found.component";
 import {AuthGuardService} from "./core/services/auth-guard.service";
+import {BillComponent} from "./pages/home/bill/bill.component";
+import {ProfileComponent} from "./pages/home/profile/profile.component";
 
 const appRouter: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -18,8 +20,17 @@ const appRouter: Routes = [
     canActivate: [AuthGuardService]
   },
   {
+    path: 'bill',
+    component: BillComponent,
+    canActivate: [AuthGuardService]
+  }
+  ,
+  {
     path: 'watches', loadChildren: () =>
       import('./pages/home/watches/watches.module').then((m) => m.WatchesModule)
+  },
+  {
+    path: 'profile', component: ProfileComponent
   },
   {path: '**', component: PageNotFoundComponent}
 ];

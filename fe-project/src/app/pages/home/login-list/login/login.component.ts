@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/']);
       },
       (error) => {
-        this.showError();
+        this.showError(error);
       }
     );
 
@@ -57,8 +57,8 @@ export class LoginComponent implements OnInit {
     this.messageService.add({severity: 'success', summary: 'Thành công', detail: message});
   }
 
-  showError() {
-    this.messageService.add({severity: 'error', summary: 'Thất bại', detail: 'Lỗi hệ thống.'});
+  showError(message: string) {
+    this.messageService.add({severity: 'error', summary: 'Thất bại', detail: message});
   }
 
 

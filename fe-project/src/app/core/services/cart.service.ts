@@ -6,10 +6,9 @@ import {HttpClient} from "@angular/common/http";
 export class CartService {
   private shoppingCartData: any;
 
-
   private apiUrl = 'http://localhost:8000/api/cart';
   private apiGetWatchById = 'http://localhost:8000/api/product';
-
+  totalPrice: number = 0;
 
   constructor(private http: HttpClient) {
   }
@@ -38,6 +37,14 @@ export class CartService {
 
   removeToCart(id: string | number) {
     return this.http.delete(`${this.apiUrl}/${id}`, {});
+  }
+
+  setTotalPrice(totalPrice: number) {
+    this.totalPrice = totalPrice;
+  }
+
+  getTotalPrice() {
+    return this.totalPrice;
   }
 
   onShow() {

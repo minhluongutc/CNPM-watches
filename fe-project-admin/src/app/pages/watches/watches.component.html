@@ -434,7 +434,14 @@
         </div>
         <div class="form-group">
           <p class="form-title">Ảnh sản phẩm</p>
-          <input formControlName="image" class="form-input" type="text">
+          <input formControlName="image" class="form-input" type="file" (change)="onFileChange($event)"
+                 enctype="multipart/form-data">
+        </div>
+        <div class="form-group">
+          <p class="form-title">Ảnh chi tiết sản phẩm</p>
+          <input formControlName="images" multiple class="form-input" type="file" (change)="onFilesChange($event)"
+                 enctype="multipart/form-data">
+          <!--          <img [src]="preview" style="width: 50%; max-width: 70px">-->
         </div>
         <div class="form-group">
           <p class="form-title">Mô tả sản phẩm</p>
@@ -528,7 +535,14 @@
         </div>
         <div class="form-group">
           <p class="form-title">Ảnh sản phẩm</p>
-          <input formControlName="image" class="form-input" type="text" [value]="watchSelected.anhSP">
+          <input formControlName="image" class="form-input" type="file" (change)="onFileChange($event)"
+                 enctype="multipart/form-data">
+        </div>
+        <div class="form-group">
+          <p class="form-title">Ảnh chi tiết sản phẩm</p>
+          <input formControlName="images" multiple class="form-input" type="file" (change)="onFilesChange($event)"
+                 enctype="multipart/form-data">
+          <!--          <img [src]="preview" style="width: 50%; max-width: 70px">-->
         </div>
         <div class="form-group">
           <p class="form-title">Mô tả sản phẩm</p>

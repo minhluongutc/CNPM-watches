@@ -13,6 +13,7 @@ import {WatchShapeService} from "./services/watchShape.service";
 import {WatchStrapService} from "./services/watchStrap.service";
 import {WatchTypeService} from "./services/watchType.service";
 import {StatisticsService} from "./services/statistics.service";
+import {CheckoutService} from "../../../../fe-project/src/app/core/services/checkout.service";
 
 @NgModule({
   providers: [
