@@ -9,6 +9,7 @@ import {MessageService} from "primeng/api";
 import {AuthGuardService} from "./services/auth-guard.service";
 import {AuthInterceptorService} from "./services/auth-interceptor.service";
 import {CheckoutService} from "./services/checkout.service";
+import {WishlistService} from "./services/wishlist.service";
 
 @NgModule({
   providers: [
@@ -17,6 +18,7 @@ import {CheckoutService} from "./services/checkout.service";
     AuthService,
     MessageService,
     AuthGuardService,
+    WishlistService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,

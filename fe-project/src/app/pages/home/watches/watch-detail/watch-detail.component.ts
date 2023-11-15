@@ -4,6 +4,7 @@ import {WatchService} from "../../../../core/services/watch.service";
 import {Watch} from "../../../../models/watch.model";
 import {CartService} from "../../../../core/services/cart.service";
 import {MessageService} from "primeng/api";
+import {WishlistService} from "../../../../core/services/wishlist.service";
 
 @Component({
   selector: 'app-watch-detail',
@@ -11,12 +12,18 @@ import {MessageService} from "primeng/api";
   styleUrls: ['./watch-detail.component.css']
 })
 export class WatchDetailComponent implements OnInit {
-  watch: Watch = new Watch("", "", 0, 0, "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "");
+  watch: Watch = new Watch("", "", 0, 0, "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "", 0);
   id: string = '';
   imageDetails: any;
   isLoading: boolean = false;
 
-  constructor(private route: ActivatedRoute, public watchService: WatchService, private cartSV: CartService, private messageService: MessageService) {
+  constructor(
+    private route: ActivatedRoute,
+    public watchService: WatchService,
+    private cartSV: CartService,
+    private messageService: MessageService,
+    private wishlistSV: WishlistService
+  ) {
   }
 
   ngOnInit(): void {
@@ -63,7 +70,20 @@ export class WatchDetailComponent implements OnInit {
         },
         error => {
           console.log(error);
-          this.showError('Thêm sản phẩm không thành công.' + error);
+          this.showError('Thêm sản phẩm không thành công, vui lòng đăng nhập.');
+        })
+  }
+
+  onAddToWishlist(id: string | number) {
+    this.wishlistSV
+      .addToWishlist(id)
+      .subscribe(res => {
+          console.log(res);
+          this.showSuccess('Thêm thành công sản phẩm vào danh sách yêu thích.');
+        },
+        error => {
+          console.log(error);
+          this.showError('Thêm sản phẩm không thành công, vui lòng đăng nhập.');
         })
   }
 
@@ -76,4 +96,5 @@ export class WatchDetailComponent implements OnInit {
   }
 
 
+  protected readonly Watch = Watch;
 }

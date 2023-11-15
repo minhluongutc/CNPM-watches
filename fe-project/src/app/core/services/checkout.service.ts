@@ -1,12 +1,13 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpParams} from "@angular/common/http";
+import {CartService} from "./cart.service";
 
 @Injectable()
 export class CheckoutService {
   private url = 'http://127.0.0.1:8000/api/vnpay_payment';
   private billUrl = 'http://127.0.0.1:8000/api/bill'
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private cartSV: CartService) {
   }
 
   getPayment() {
@@ -27,6 +28,8 @@ export class CheckoutService {
     vnp_TxnRef: string | number | boolean,
     vnp_SecureHash: string | number | boolean
   ) {
+    this.cartSV.setTotalPrice(0);
+
     // Tạo một đối tượng HttpParams để chứa các tham số
     let params = new HttpParams();
 

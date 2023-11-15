@@ -32,7 +32,7 @@
           <span>{{userData.tenKhachHang}}</span>
         </a>
         <ul class="dropdown-menu">
-          <li class="dropdown-item">Hồ sơ</li>
+          <li routerLink="/profile" class="dropdown-item">Hồ sơ</li>
           <li class="dropdown-item" (click)="onLogout()">Đăng xuất</li>
         </ul>
       </li>
@@ -66,7 +66,7 @@
         </a>
       </li>
       <li class="header__navbar-item">
-        <a href="" class="header__navbar-item-icon">
+        <a class="header__navbar-item-icon" (click)="onShowWishlist()">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="1em"
@@ -110,3 +110,6 @@
 
 <app-cart-item-mini [isAuthenticated]="isAuthenticated" *ngIf="showItemCart"
                     (onClose)="onCloseCartItem($event)"></app-cart-item-mini>
+
+<app-wishlist [isAuthenticated]="isAuthenticated" *ngIf="showItemWishlist"
+              (onClose)="onCloseWishlist($event)"></app-wishlist>

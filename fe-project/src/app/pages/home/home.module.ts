@@ -18,6 +18,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ToastModule} from "primeng/toast";
 import {BillComponent} from './bill/bill.component';
 import {ProfileComponent} from './profile/profile.component';
+import {MatRippleModule} from "@angular/material/core";
+import {MatTableModule} from "@angular/material/table";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {WishlistComponent} from './header/header-main/wishlist/wishlist.component';
 
 
 @NgModule({
@@ -34,6 +38,7 @@ import {ProfileComponent} from './profile/profile.component';
     FooterComponent,
     BillComponent,
     ProfileComponent,
+    WishlistComponent,
   ],
   exports: [
     HomeComponent,
@@ -57,6 +62,13 @@ import {ProfileComponent} from './profile/profile.component';
     NgIf,
     ReactiveFormsModule,
     SharedModule,
+    MatTableModule,
+    MatRippleModule,
+    MatTableModule,
+    MatCheckboxModule,
+    MatTableModule,
+    MatTableModule,
+    MatTableModule
   ],
   providers: [
     CartItemMiniComponent

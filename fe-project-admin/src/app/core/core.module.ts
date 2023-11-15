@@ -14,6 +14,7 @@ import {WatchStrapService} from "./services/watchStrap.service";
 import {WatchTypeService} from "./services/watchType.service";
 import {StatisticsService} from "./services/statistics.service";
 import {CheckoutService} from "../../../../fe-project/src/app/core/services/checkout.service";
+import {BillOfSaleService} from "./services/bill-of-sale.service";
 
 @NgModule({
   providers: [
@@ -30,6 +31,7 @@ import {CheckoutService} from "../../../../fe-project/src/app/core/services/chec
     WatchStrapService,
     WatchTypeService,
     StatisticsService,
+    BillOfSaleService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,

@@ -7,7 +7,9 @@ import {AuthResponseData} from "../../models/AuthResponseData.model";
 
 @Injectable()
 export class AuthService {
-  apiUrl = 'http://127.0.0.1:8000/api/auth/user'
+  apiUrl = 'http://127.0.0.1:8000/api/auth/user';
+  forgotPasswordApi = 'http://127.0.0.1:8000/api/ForgotByEmail';
+  changePasswordApi = 'http://127.0.0.1:8000/api/ForgotByEmail';
 
   private tokenExpirationTimer: any;
   // @ts-ignore
@@ -21,6 +23,12 @@ export class AuthService {
     return this.http.get(`${this.apiUrl}/profile`);
   }
 
+  forgotPassword(email: string) {
+    const formData = new FormData();
+    formData.append('email', email);
+    return this.http.post(`${this.forgotPasswordApi}`, formData).pipe(catchError(this.handleError));
+  }
+
   updateProfile(id: string | number, gioiTinh: string, diaChi: string, SDT: string) {
     const formData = new FormData();
     formData.append('gioiTinh', gioiTinh);
@@ -28,6 +36,15 @@ export class AuthService {
     formData.append('SDT', SDT);
 
     return this.http.post(`${this.apiUrl}/update/${id}`, formData);
+  }
+
+  changePassword(id: string, oldPassword: string, newPassword: string) {
+    const formData = new FormData();
+    formData.append('maKhachHang', id);
+    formData.append('matKhauCu', oldPassword);
+    formData.append('matKhauMoi', newPassword);
+
+    return this.http.post(`${this.apiUrl}/changePassword/${id}`, formData);
   }
 
   register(fullName: string, gender: string, address: string, phoneNumber: string, email: string, password: string): Observable<AuthResponseData> {
@@ -166,12 +183,15 @@ export class AuthService {
   private handleError(errorRes: HttpErrorResponse) {
     console.log(errorRes)
     let errorMessage = '';
-    switch (errorRes.error.error) {
+    switch (errorRes.error.error || errorRes.error.message) {
       case 'Unauthorized':
         errorMessage = 'Tài khoản hoặc mật khẩu không chính xác.';
         break;
       case 'duplicateEmail':
         errorMessage = 'Tài khoản email đã tồn tại.';
+        break;
+      case 'User not found':
+        errorMessage = 'Tài khoản chưa được đăng ký.';
         break;
       default :
         errorMessage = 'Lỗi hệ thống';

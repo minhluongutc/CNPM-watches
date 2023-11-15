@@ -1,9 +1,9 @@
 <form [formGroup]="signupForm">
-  <p class="form-intro">This space allows you to manage your personal information, e-Boutique orders, news updates and
-    newsletter subscriptions.</p>
-  <p class="form-required">Required field*</p>
+  <p class="form-intro">Không gian này cho phép bạn quản lý thông tin cá nhân, đơn đặt hàng Cửa hàng điện tử, cập nhật
+    tin tức và đăng ký bản tin.</p>
+  <p class="form-required">Bắt buộc*</p>
   <div class="form-group">
-    <p class="form-control-label">Title*</p>
+    <p class="form-control-label">Giới tính*</p>
     <div class="form-check-group">
       <div class="form-check__item">
         <input type="radio" value="Nam" name="genderRegister" id="man" formControlName="genderRegister">
@@ -55,44 +55,20 @@
           <span *ngIf="phoneNumber?.errors?.['pattern']" class="red">
             Vui lòng nhập đúng định dạng số điện thoại.
           </span>
-      <!--          <span *ngIf="phoneNumber?.errors?.['pattern']" class="red">-->
-      <!--            Vui lòng nhập ký tự khác số.-->
-      <!--          </span>-->
         </span>
   </div>
-  <!--  <p class="form-control-label">Date of Birth</p>-->
-  <!--  <div class="row no-gutters form-group">-->
-  <!--    <div class="col l-4">-->
-  <!--      <select class="form-control&#45;&#45;select">-->
-  <!--        <option>Day</option>-->
-  <!--        <option *ngFor="let day of days" [id]="day" [value]="day">{{ day }}</option>-->
-  <!--      </select>-->
-  <!--    </div>-->
-  <!--    <div class="col l-4">-->
-  <!--      <select class="form-control&#45;&#45;select" style="border-left: none; border-right: none;">-->
-  <!--        <option>Month</option>-->
-  <!--        <option *ngFor="let month of months" [id]="month" [value]="month">{{ month }}</option>-->
-  <!--      </select>-->
-  <!--    </div>-->
-  <!--    <div class="col l-4">-->
-  <!--      <select class="form-control&#45;&#45;select">-->
-  <!--        <option>Year</option>-->
-  <!--        <option *ngFor="let year of years" [id]="year" [value]="year">{{ year }}</option>-->
-  <!--      </select>-->
-  <!--    </div>-->
-  <!--  </div>-->
   <div class="form-group">
     <input type="text" class="form-input" required formControlName="email"
            [class.form-input__error]="email?.invalid && email?.touched">
     <span class="bar"></span>
-    <label class="form-label">Email Address*</label>
+    <label class="form-label">Địa chỉ email*</label>
 
     <span *ngIf="email?.invalid && email?.touched" class="help-block">
       <span *ngIf="email?.errors?.['required']" class="red">
-        Error - This field is required
+        Vui lòng nhập email.
       </span>
       <span *ngIf="email?.errors?.['email']" class="red">
-        Error - Please enter a valid Email address
+        Vui lòng nhập email đúng định dạng
       </span>
     </span>
   </div>
@@ -100,15 +76,15 @@
     <input type="text" class="form-input" required formControlName="confirmEmail"
            [class.form-input__error]="confirmEmail?.invalid && confirmEmail?.touched">
     <span class="bar"></span>
-    <label class="form-label">Confirm Email*</label>
+    <label class="form-label">Nhập lại email*</label>
 
     <span *ngIf="confirmEmail?.invalid && confirmEmail?.touched" class="help-block">
       <span *ngIf="confirmEmail?.errors?.['required']" class="red">
-        Error - This field is required
+        Vui lòng nhập email.
       <br>
       </span>
       <span *ngIf="confirmEmail?.errors?.['notMatch']" class="red">
-        Error - email confirm must equal email
+        Email không khớp.
       </span>
     </span>
   </div>
@@ -116,15 +92,15 @@
     <input type="password" class="form-input" required formControlName="password"
            [class.form-input__error]="password?.invalid && password?.touched">
     <span class="bar"></span>
-    <label class="form-label">Password*</label>
+    <label class="form-label">Mật khẩu*</label>
 
     <span *ngIf="password?.invalid && password?.touched" class="help-block">
       <span *ngIf="password?.errors?.['required']" class="red">
-        Error - This field is required
+        Vui lòng nhập mật khẩu.
       <br>
       </span>
       <span *ngIf="!password?.errors?.['minLength']" class="red">
-        Error - This field is greater than 6
+        Mật khẩu phải nhiều hơn 6 ký tự.
       </span>
     </span>
   </div>
@@ -132,28 +108,28 @@
     <input type="password" class="form-input" required formControlName="confirmPassword"
            [class.form-input__error]="confirmPassword?.invalid && confirmPassword?.touched">
     <span class="bar"></span>
-    <label class="form-label">Confirm Password*</label>
+    <label class="form-label">Nhập lại mật khẩu*</label>
 
     <span *ngIf="confirmPassword?.invalid && confirmPassword?.touched" class="help-block">
         <span *ngIf="confirmPassword?.errors?.['required']" class="red">
-          Error - This field is required
+          Vui lòng nhập lại mật khẩu.
       <br>
         </span>
         <span *ngIf="confirmPassword?.errors?.['notMatch']" class="red">
-          Error - password confirm must equal password
+          Mật khẩu không khớp.
         </span>
     </span>
   </div>
   <div class="form-group">
     <div class="form-policy">
-      <p class="policy-intro">For further information about how we use your personal information, please see our
-        <a href="" class="policy-link">Privacy Policy</a>
+      <p class="policy-intro">Để biết thêm thông tin về cách chúng tôi sử dụng thông tin cá nhân của bạn, vui lòng xem
+        <a href="" class="policy-link">Chính sách bảo mật</a>
       </p>
     </div>
   </div>
   <div class="form-actions text-align--center">
     <button type="submit" class="button button--primary" style="width: 100%;" (click)="onSubmit(signupForm)"
-            [disabled]="signupForm.invalid">Create Account
+            [disabled]="signupForm.invalid">Tạo tài khoản
     </button>
   </div>
 </form>

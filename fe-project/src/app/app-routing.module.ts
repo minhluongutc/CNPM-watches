@@ -7,6 +7,7 @@ import {PageNotFoundComponent} from "./shared/components/page-not-found/page-not
 import {AuthGuardService} from "./core/services/auth-guard.service";
 import {BillComponent} from "./pages/home/bill/bill.component";
 import {ProfileComponent} from "./pages/home/profile/profile.component";
+import {ForgotPasswordComponent} from "./pages/home/forgot-password/forgot-password.component";
 
 const appRouter: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -31,6 +32,9 @@ const appRouter: Routes = [
   },
   {
     path: 'profile', component: ProfileComponent
+  },
+  {
+    path: 'forgot-password', component: ForgotPasswordComponent
   },
   {path: '**', component: PageNotFoundComponent}
 ];

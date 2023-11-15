@@ -559,7 +559,7 @@
     </div>
     <div class="popup-delete--action">
       <button class="button--secondary" (click)="hideUpdateFormFn()">Hủy</button>
-      <button class="button--primary" (click)="onEdit(editForm)">Sửa</button>
+      <button class="button--primary" (click)="onEdit(editForm)" [disabled]="editForm.invalid">Sửa</button>
     </div>
   </form>
 

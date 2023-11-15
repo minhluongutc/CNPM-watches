@@ -68,23 +68,24 @@
         <div class="checkout__container">
           <div class="row" style="margin-bottom: 12px">
             <dt class="col l-6">
-              <p class="price-primary">SUBTOTAL</p>
+              <p class="price-primary">TỔNG TIỀN</p>
             </dt>
             <dd class="col l-6">
-              <p class="price-primary text-align--right">{{dataResponse[0].tongTienGH | currency}}</p>
+              <p class="price-primary text-align--right">{{dataResponse[0].tongTienGH  | currency: 'VND':'':'1.0-0' }}
+                vnđ</p>
             </dd>
           </div>
           <div class="row">
             <dt class="col l-6">
-              <p>Sales tax</p>
+              <p>Giảm giá</p>
             </dt>
             <dd class="col l-6">
-              <p class="text-align--right">$0.00</p>
+              <p class="text-align--right">0.00</p>
             </dd>
           </div>
           <div class="checkout__button">
             <a class="checkout__button-link button button--primary"
-               (click)="onCheckout()">{{'Proceed to Checkout' | uppercase}}</a>
+               (click)="onCheckout()">TIẾN HÀNH THANH TOÁN</a>
           </div>
         </div>
       </div>
@@ -96,7 +97,7 @@
           <path
             d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/>
         </svg>
-        <p class="back-text"> BACK TO SHOPPING</p>
+        <p class="back-text"> TRỞ LẠI MUA SẮM</p>
       </a>
     </div>
   </div>

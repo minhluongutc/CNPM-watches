@@ -23,6 +23,10 @@ export class CartService {
     return this.http.get(`${this.apiGetWatchById}/${id}`)
   }
 
+  getBillSales(page: number, pageSize: number) {
+    return this.http.get(`http://127.0.0.1:8000/api/showHdb?page=${page}&pageSize=${pageSize}`);
+  }
+
   getShoppingCartData(): any {
     return this.shoppingCartData;
   }

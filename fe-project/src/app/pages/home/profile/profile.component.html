@@ -8,23 +8,46 @@
     <p>Giới tính: {{dataResponse.gioiTinh}}</p>
     <!--    <p>Sở thích: Đọc sách, nghe nhạc</p>-->
   </div>
-
-  <div id="invoice-list">
-    <h2>Lịch sử mua hàng</h2>
-    <!-- Hiển thị danh sách hóa đơn ở đây -->
-    <ul>
-      <li>ngày 1</li>
-      <li>ngày 1</li>
-      <li>ngày 1</li>
-      <li>ngày 1</li>
-    </ul>
-  </div>
+  <hr>
 
   <!--  <button id="change-password-btn">Đổi Mật Khẩu</button>-->
-  <button id="edit-info-btn" (click)="showUpdatePopupFn()">Sửa Thông Tin Cá Nhân</button>
+  <button class="edit-info-btn" (click)="showUpdatePopupFn()">Sửa Thông Tin Cá Nhân</button>
+  <button class="edit-info-btn" (click)="showRepassword()" style="margin-left: 10px;">Đổi mật khẩu</button>
+
+
+</div>
+<div style="padding: 50px 272px;">
+  <h2 class="text-align--center">Lịch sử mua hàng</h2>
+  <br>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 text-align--center">
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> STT</th>
+      <td mat-cell *matCellDef="let hdb; let i = index" matRow (click)="onRowClick(hdb)"
+          class="cursor--pointer"> {{i + 1}} </td>
+    </ng-container>
+    <ng-container matColumnDef="maHDB">
+      <th mat-header-cell *matHeaderCellDef> Mã hóa đơn</th>
+      <td mat-cell *matCellDef="let hdb" matRow (click)="onRowClick(hdb)" class="cursor--pointer"> {{hdb.maHDB}} </td>
+    </ng-container>
+    <ng-container matColumnDef="ngayLapHD">
+      <th mat-header-cell *matHeaderCellDef> Ngày lập hóa đơn</th>
+      <td mat-cell *matCellDef="let hdb" matRow (click)="onRowClick(hdb)"
+          class="cursor--pointer"> {{hdb.ngayLapHD}} </td>
+    </ng-container>
+    <ng-container matColumnDef="tongTienHDB">
+      <th mat-header-cell *matHeaderCellDef> Tổng tiền hóa đơn</th>
+      <td mat-cell *matCellDef="let hdb" matRow (click)="onRowClick(hdb)"
+          class="cursor--pointer" matRowHover> {{hdb.tongTienHDB | currency: 'VND':'':'1.0-0' }}vnđ
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 </div>
 
-<!-- Popup -->
+
+<!-- Update profile popup -->
 <div *ngIf="showUpdatePopup" style="transition: all linear 0.5s">
   <div class="overlay" (click)="hideUpdateFormFn()"></div>
   <form class="popup-add" [formGroup]="editForm">
@@ -78,10 +101,114 @@
     </div>
     <div class="popup-delete--action">
       <button class="button button--secondary" (click)="hideUpdateFormFn()">Hủy</button>
-      <button class="button button--primary" (click)="onEdit(editForm)" [disabled]="editForm.invalid">Sửa</button>
+      <button class="button button--primary" (click)="onEditProfile(editForm)" [disabled]="editForm.invalid">Sửa
+      </button>
     </div>
   </form>
 
 </div>
 
+
+<!-- Repassword popup -->
+<div *ngIf="showRepasswordForm" style="transition: all linear 0.5s">
+  <div class="overlay" (click)="hideRepassword()"></div>
+  <form class="popup-repassword" [formGroup]="repasswordForm">
+    <h1 class="popup-delete--title">đổi mật khẩu</h1>
+    <div class="row no-gutters">
+      <div class="col l-12">
+        <div class="form-group">
+          <p class="form-title">Mật khẩu hiện tai</p>
+          <input formControlName="oldPassword" class="form-input" type="password"
+                 [class.form-input__error]="oldPassword?.invalid && oldPassword?.touched">
+          <span *ngIf="oldPassword?.invalid && oldPassword?.touched" class="help-block">
+            <span *ngIf="oldPassword?.errors?.['required']" class="red">
+              Vui lòng nhập mật khẩu hiện tại của bạn.
+            </span>
+          </span>
+        </div>
+        <div class="form-group">
+          <p class="form-title">Mật khẩu mới</p>
+          <input formControlName="newPassword" class="form-input" type="password"
+                 [class.form-input__error]="newPassword?.invalid && newPassword?.touched">
+
+          <span *ngIf="newPassword?.invalid && newPassword?.touched" class="help-block">
+            <span *ngIf="newPassword?.errors?.['required']" class="red">
+              Vui long nhập mật khẩu mới.
+            <br>
+            </span>
+            <span *ngIf="!newPassword?.errors?.['minLength']" class="red">
+              Mật khẩu phải nhiều hơn 6 ký tự.
+            </span>
+          </span>
+        </div>
+        <div class="form-group">
+          <p class="form-title">Nhập lại mật khẩu mới</p>
+          <input formControlName="confirmNewPassword" class="form-input" type="password"
+                 [class.form-input__error]="confirmNewPassword?.invalid && confirmNewPassword?.touched">
+
+          <span *ngIf="confirmNewPassword?.invalid && confirmNewPassword?.touched" class="help-block">
+            <span *ngIf="confirmNewPassword?.errors?.['required']" class="red">
+              Vui lòng nhập lại mật khẩu.
+            <br>
+            </span>
+            <span *ngIf="confirmNewPassword?.errors?.['notMatch']" class="red">
+              Mật khẩu không khớp.
+            </span>
+          </span>
+        </div>
+
+      </div>
+    </div>
+    <div *ngIf="isLoadingForm" style="    position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 10;
+        transform: translate(-50%, -50%);">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+    <div class="popup-delete--action">
+      <button class="button button--secondary" (click)="hideRepassword()">Hủy</button>
+      <button class="button button--primary" [disabled]="repasswordForm.invalid"
+              (click)="onChangePassword(repasswordForm)">Sửa
+      </button>
+    </div>
+  </form>
+
+</div>
+
+<div *ngIf="showBill">
+  <div class="overlay" (click)="hideBill()"></div>
+  <div class="invoice" id="bill">
+
+    <div class="button button--primary" (click)="exportToPDF()">Xuất PDF</div>
+    <div class="invoice-header">
+      <h2>Hóa Đơn Bán</h2>
+      <p>Ngày: {{ bill.ngayLapHD }}</p>
+      <p>Mã Hóa Đơn: {{ bill.maHDB }}</p>
+    </div>
+
+    <table class="invoice-items">
+      <thead>
+      <tr>
+        <th>Sản Phẩm</th>
+        <th>Đơn Giá</th>
+        <th>Số Lượng</th>
+        <th>Thành Tiền</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of bill.chi_tiet_hoa_don">
+        <td>{{ item.san_pham.tenSanPham }}</td>
+        <td>{{ item.san_pham.giaSanPham | currency: 'VND':'':'1.0-0' }}vnđ</td>
+        <td>{{ item.SL }}</td>
+        <td>{{ item.thanhTien | currency: 'VND':'':'1.0-0' }}vnđ</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="invoice-total">
+      <p>Tổng Tiền: {{ bill.tongTienHDB | currency: 'VND':'':'1.0-0' }}vnđ</p>
+    </div>
+  </div>
+</div>
 

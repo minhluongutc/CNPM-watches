@@ -15,13 +15,49 @@ export class CartItemMiniComponent implements OnInit {
   dataResponse: any;
   @Output() onClose = new EventEmitter<boolean>();
   @Input() isAuthenticated = false;
+  watchInCart: Watch = new Watch("", "", 0, 0, "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "", 0)
+  dataResponseSub: any;
 
   constructor(public cartSV: CartService, private messageService: MessageService, public watchService: WatchService) {
   }
 
   ngOnInit(): void {
+    this.watchesInCart = [];
     this.cartSV.showCartItem = false;
-    this.watchesInCart = this.cartSV.getShoppingCartData();
+    this.getCartDetail();
+  }
+
+  getCartDetail() {
+    this.cartSV
+      .getWatchIdsInCart()
+      .subscribe(
+        (res) => {
+          console.log(res)
+          this.dataResponse = res;
+
+          this.cartSV.setTotalPrice(this.dataResponse[0].tongTienGH)
+          console.log(this.dataResponse[0].cart_detail);//chi tiet gio hang
+          for (let watch of this.dataResponse[0].cart_detail) {
+            this.getWatchesInCart(watch.maSanPham);
+          }
+          this.cartSV.setShoppingCartData(this.watchesInCart);
+        },
+        (error) => {
+          console.log(error);
+        }
+      )
+  }
+
+  getWatchesInCart(id: string | number) {
+    this.watchesInCart = [];
+    this.cartSV
+      .getWatchById(id)
+      .subscribe((res) => {
+        console.log(res)
+        this.dataResponseSub = res;
+        this.watchInCart = this.dataResponseSub.product;
+        this.watchesInCart.push(this.watchInCart)
+      })
   }
 
   onAddToCart(id: string | number) {
@@ -45,7 +81,7 @@ export class CartItemMiniComponent implements OnInit {
         console.log(res)
         this.showSuccess('Xóa sản phẩm khỏi giỏ hàng thành công.');
       })
-    // this.getCartDetail();
+    this.ngOnInit()
   }
 
   showError(message: string) {

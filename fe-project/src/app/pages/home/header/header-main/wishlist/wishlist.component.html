@@ -1,8 +1,8 @@
 <div>
   <div class="bag-modal">
     <div>
-      <h2 class="title">{{ 'Giỏ hàng (' + watchesInCart.length + ')' | uppercase }}</h2>
-      <svg (click)="onCloseCart(false)" class="icon-cancel" viewBox="0 0 512 512" version="1.1" xml:space="preserve"
+      <h2 class="title">{{ 'YÊU THÍCH (' + watchesInCart.length + ')'}}</h2>
+      <svg (click)="onCloseWishlist(false)" class="icon-cancel" viewBox="0 0 512 512" version="1.1" xml:space="preserve"
            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g>
         <g
           id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -17,9 +17,10 @@
     </div>
     <div class="bag-content" *ngIf="watchesInCart.length<=0">
 
-      <div class="bag-list-item">
+      <div class="bag-list-item" style="    height: calc(100vh - 122px);
+">
         <p class="text-align--center p-text-secondary">
-          Không có sản phẩm nào trong giỏ hàng.
+          Không có sản phẩm nào trong danh sách.
         </p>
       </div>
     </div>
@@ -27,14 +28,15 @@
       <!--      <div class="bag-empty">-->
       <!--        <p class="bag-content-empty">Không có sản phẩm nào trong giỏ hàng</p>-->
       <!--      </div>-->
-      <div class="bag-list-item">
+      <div class="bag-list-item" style="    height: calc(100vh - 122px);
+">
         <p class="text-align--center p-text-secondary" *ngIf="!(watchesInCart.length>0)">
-          Không có sản phẩm nào trong giỏ hàng.
+          Không có sản phẩm nào trong danh sách.
         </p>
         <div class="bag-item" *ngFor="let watch of watchesInCart; let i = index">
           <div class="row">
             <div class="col l-6">
-              <a routerLink="/watches/{{watch.maSanPham}}" class="item-img-link" (click)="onCloseCart(false)">
+              <a class="item-img-link" routerLink="/watches/{{watch.maSanPham}}" (click)="onCloseWishlist(false)">
                 <img
                   class="item-img"
                   src="{{watchService.getImage(watch.maSanPham)}}"
@@ -45,10 +47,10 @@
               <div class="product-line-item__header">
                 <div class="product-name">
                   <a routerLink="/watches/{{watch.maSanPham}}" class="product-name-link"
-                     (click)="onCloseCart(false)">{{ watch.tenSanPham | uppercase}}</a>
+                     (click)="onCloseWishlist(false)">{{ watch.tenSanPham | uppercase}}</a>
                 </div>
                 <div class="product-close-icon">
-                  <button class="close-icon" (click)="onRemoveToCart(watch.maSanPham)">
+                  <button class="close-icon" (click)="onRemoveToWishlist(watch.maSanPham)">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                       <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -68,45 +70,14 @@
                 <div class="price-sales">{{ watch.giaSanPham | currency: 'VND':'':'1.0-0' }}vnđ</div>
               </div>
               <br>
-              <p class="text-align--left subtotal" style="font-size: 14px !important;">
-                Số lượng: {{ dataResponse[0].cart_detail[i].soLuongSP }}
-              </p>
+              <button class="button button--primary">Thêm giỏ hàng</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="overlay__footer">
-      <div class="overlay__footer-content">
-        <div class="row">
-          <div class="col l-6">
-            <p class="text-align--left subtotal">
-              TỔNG TIỀN
-            </p>
-          </div>
-          <div class="col l-6">
-            <!--            <p class="text-align&#45;&#45;right subtotal">-->
-            <!--              {{ dataResponse[0].tongTienGH | currency: 'VND':'':'1.0-0' }}-->
-            <!--              vnđ-->
-            <!--            </p>-->
-            <p class="text-align--right subtotal">
-              {{ cartSV.getTotalPrice() | currency: 'VND':'':'1.0-0' }} vnđ
-            </p>
-          </div>
-        </div>
-        <p class="footer-description text-align--left" style="font-size: 17px">Vận chuyển và thuế được tính khi thanh
-          toán.</p>
-        <div class="overlay__footer-actions">
-          <a routerLink="/cart"
-             class="button button--primary width100"
-             (click)="onCloseCart(false)">XEM GIỎ HÀNG</a>
-          <!--          <a routerLink="/login" *ngIf="!isAuthenticated"-->
-          <!--             class="button button&#45;&#45;primary width100"-->
-          <!--             (click)="onCloseCart(false)">{{ 'View my shopping bag' | uppercase }}</a>-->
-        </div>
-      </div>
-    </div>
+
   </div>
-  <label class="bag-overlay" (click)="onCloseCart(false)"></label>
+  <label class="bag-overlay" (click)="onCloseWishlist(false)"></label>
 
 </div>

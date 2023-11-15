@@ -9,6 +9,8 @@ import {WatchesRoutingModule} from "./watches-routing.module";
 import {RouterLink, RouterModule} from "@angular/router";
 import {ToastModule} from "primeng/toast";
 import {SharedModule} from "../../../shared/shared.module";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {PaginatorModule} from "primeng/paginator";
 
 @NgModule({
   declarations: [
@@ -27,7 +29,10 @@ import {SharedModule} from "../../../shared/shared.module";
     CommonModule,
     ToastModule,
     SharedModule,
-    NgForOf
+    NgForOf,
+    FormsModule,
+    ReactiveFormsModule,
+    PaginatorModule
   ]
 })
 export class WatchesModule {

@@ -4,6 +4,7 @@ import {AuthService} from "../../../../core/services/auth.service";
 import {User} from "../../../../models/user.model";
 import {Subscription} from "rxjs";
 import {Router} from "@angular/router";
+import {WishlistService} from "../../../../core/services/wishlist.service";
 
 @Component({
   selector: 'app-header-main',
@@ -12,6 +13,7 @@ import {Router} from "@angular/router";
 })
 export class HeaderMainComponent implements OnInit {
   showItemCart: boolean = false;
+  showItemWishlist: boolean = false;
   userData: Partial<User> = {};
   isAuthenticated: boolean = false;
   userSub: Subscription;
@@ -19,6 +21,7 @@ export class HeaderMainComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private shoppingCartSV: CartService,
+    private wishlistSV: WishlistService,
     private router: Router
   ) {
     this.userSub = Subscription.EMPTY;
@@ -48,5 +51,15 @@ export class HeaderMainComponent implements OnInit {
 
   onLogout() {
     this.authService.logout();
+  }
+
+  onShowWishlist() {
+    this.wishlistSV.onShow()
+    this.showItemWishlist = this.wishlistSV.showWishlistItem;
+  }
+
+  onCloseWishlist(status: boolean) {
+    this.wishlistSV.onClose();
+    this.showItemWishlist = this.wishlistSV.showWishlistItem;
   }
 }

@@ -18,9 +18,10 @@ export class Watch {
   public tenCL: string;
   public tenHinhDang: string;
   public tenmauDD: string;
+  public soLuongSP: number
 
 
-  constructor(maSanPham: string, tenSanPham: string, giaSanPham: number, slTonKho: number, anhSP: string, moTaSP: string, ngayThemSP: string, maSeri: string, tenLoai: string, tenThuongHieu: string, tenQG: string, baoHanhSP: string, giamGiaSP: string, kichThuoc: number | string, tenCCHD: string, loaiDayDeo: string, tenCL: string, tenHinhDang: string, tenmauDD: string) {
+  constructor(maSanPham: string, tenSanPham: string, giaSanPham: number, slTonKho: number, anhSP: string, moTaSP: string, ngayThemSP: string, maSeri: string, tenLoai: string, tenThuongHieu: string, tenQG: string, baoHanhSP: string, giamGiaSP: string, kichThuoc: number | string, tenCCHD: string, loaiDayDeo: string, tenCL: string, tenHinhDang: string, tenmauDD: string, soLuongSP: number) {
     this.maSanPham = maSanPham;
     this.tenSanPham = tenSanPham;
     this.giaSanPham = giaSanPham;
@@ -40,5 +41,6 @@ export class Watch {
     this.tenCL = tenCL;
     this.tenHinhDang = tenHinhDang;
     this.tenmauDD = tenmauDD;
+    this.soLuongSP = soLuongSP;
   }
 }

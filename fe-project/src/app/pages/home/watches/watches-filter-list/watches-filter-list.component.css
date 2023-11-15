@@ -15,3 +15,20 @@
 .breadcrumbs__anchor {
   margin: 0 6px 0 5.4px;
 }
+
+.filter-container {
+  padding-top: 25px
+}
+
+.form-check-group {
+  /*margin-top: -8px;*/
+  /*margin-bottom: -22px;*/
+}
+
+.form-check__item {
+  margin: 13px 32px 13px 0;
+}
+
+.form-check-label--radio {
+  padding-left: 16px;
+}

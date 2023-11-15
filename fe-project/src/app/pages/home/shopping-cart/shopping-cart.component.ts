@@ -13,7 +13,7 @@ import {Router} from "@angular/router";
 })
 export class ShoppingCartComponent implements OnInit {
   watchesInCart: Watch[] = [];
-  watchInCart: Watch = new Watch("", "", 0, 0, "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "")
+  watchInCart: Watch = new Watch("", "", 0, 0, "", "", "", "", "", "", "", "", "", 0, "", "", "", "", "", 0)
   dataResponse: any;
   dataResponseSub: any;
   urlPayment: any;
@@ -92,6 +92,7 @@ export class ShoppingCartComponent implements OnInit {
         if (this.urlPayment.data) {
           // Chuyển hướng đến URL mới
           window.location.href = this.urlPayment.data;
+          this.cartSV.totalPrice = 0;
         }
       }, error => {
         console.log(error)
